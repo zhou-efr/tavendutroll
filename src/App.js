@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import {Footer} from "./Component/Footer";
+import {Header} from "./Component/Header";
+import {Navbar} from "./Component/Navbar";
+import {BrowserRouter, Routes} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden'}>
+          <BrowserRouter>
+              <Header />
+              <div className={'h-3/4'}>
+                  <h1 className="text-3xl font-bold">taverne du troll</h1>
+              </div>
+              <Footer />
+              <Navbar />
+          </BrowserRouter>
+      </div>
   );
 }
 
