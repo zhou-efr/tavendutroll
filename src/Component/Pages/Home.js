@@ -1,4 +1,4 @@
-import {BASE_API} from "../Constant";
+import {BASE_API} from "../../Constant";
 import {useEffect, useState} from "react";
 
 export const Home = (props) => {

@@ -2,10 +2,11 @@ import {Footer} from "./Component/Footer";
 import {Header} from "./Component/Header";
 import {Navbar} from "./Component/Navbar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Home} from "./Component/Home";
-import {Office} from "./Component/Office";
-import {About} from "./Component/About";
-import {Partner} from "./Component/Partner";
+import {Home} from "./Component/Pages/Home";
+import {Office} from "./Component/Pages/Office";
+import {About} from "./Component/Pages/About";
+import {Partner} from "./Component/Pages/Partner";
+import {Admin} from "./Component/Pages/Admin";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
                   <Route path={"/office"} element={<Office />}/>
                   <Route path={"/about"} element={<About />}/>
                   <Route path={"/partner"} element={<Partner />}/>
+                  <Route path={"/admin"} element={<Admin />}/>
                   <Route path={"/"} element={<Home />}/>
               </Routes>
               <Footer />

@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 .idea
+taverndutrollapi/logo.png
 taverndutrollapi/.idea
 taverndutrollapi/generator.sql
 taverndutrollapi/node_modules
