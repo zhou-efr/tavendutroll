@@ -1,9 +1,10 @@
 import logo from '../images/logo.png' ;
+import {Link} from "react-router-dom";
 
 export const Header = (props) => {
     return (
         <div className={'h-1/4 w-screen bg-cover bg-wooden-header flex flex-col justify-center items-center'}>
-            <img className={'object-cover h-full m-1'} src={logo} alt={'Logo de la Taverne du Troll'}/>
+            <Link to={'/'}><img className={'object-cover h-48 m-1'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>
         </div>
     );
 };

@@ -8,7 +8,7 @@ export const Home = (props) => {
     useEffect(() => {
         fetch(BASE_API+'publication', {method: 'GET',})
             .then(res => res.json())
-            .then((res) => {setPosts(res)})
+            .then((res) => {console.log(res[0].image);setPosts(res)})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
@@ -19,10 +19,10 @@ export const Home = (props) => {
     }, [])
 
     return (
-        <div className={'h-3/4'}>
+        <div className={'min-h-3/4'}>
             <h1 className="text-3xl font-bold">taverne du troll</h1>
-            { posts.map((a, k) => <p key={k}>{a.name}</p>) }
-            { events.map((a, k) => <p key={k}>{a.name}</p>) }
+            { posts.map((a, k) => <div key={k}><img className={'w-1/6'} alt={a.name} src={a.imageUrl}/><p>{a.name}</p></div>) }
+            { events.map((a, k) => <div key={k}><img className={'w-1/6'} alt={a.name} src={a.imageUrl}/><p>{a.name}</p></div>) }
         </div>
     );
 }

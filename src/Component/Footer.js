@@ -14,7 +14,7 @@ export const Footer = (props) => {
       <div className={"w-screen h-1/2 mb-16 flex flex-col justify-between bg-tdt-brown text-white pr-10 pb-16"}>
           <div className={"flex flex-row w-full h-2/3 border-b-2 border-b-white ml-3 mb-2 justify-between pb-4"}>
               <div className={"flex flex-row"}>
-                  <img className={'object-contain'} src={logo} alt={'Logo de la Taverne du Troll'}/>
+                  <Link to={'/'}><img className={'object-contain h-48'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>
                   <div className={"pt-3 w-72"}>
                       <h3 className={"text-2xl font-bold pb-2"}>Taverne Du Troll</h3>
                       <p className={"text-sm"}>

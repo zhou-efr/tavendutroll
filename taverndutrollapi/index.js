@@ -5,12 +5,48 @@ const sequelize = new Sequelize(process.env.tdtDatabaseName, process.env.tdtData
     logging: false
 });
 
+let multer = require('multer')
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './public');
+    },
+    filename: (req, file, cb) => {
+        let filetype = '';
+        switch (file.mimetype) {
+            case 'image/png':
+                filetype = 'png';
+                break;
+            case 'image/jpeg':
+                filetype = 'jpg';
+                break;
+            default:
+                break;
+        }
+        cb(null, 'image-' + Date.now() + '.' + filetype);
+    }});
+let upload = multer({storage: storage})
+
 const express = require('express');
 const app = express();
 const cors = require('cors');
 
 app.use(express.json())
 app.use(cors())
+
+app.get('/images/:name', (req, res) => {
+    let imageName = req.params.name
+    res.sendFile(`C:\\Users\\thepa\\WebstormProjects\\tavernedutroll\\taverndutrollapi\\public\\${imageName}`);
+});
+
+app.post('/upload',upload.single('file'), (req, res, next) => {
+    // console.log(req.file);
+    if(!req.file) {
+        res.status(500);
+        return next('error');
+    }
+    res.json({ fileUrl: 'http://localhost:8080/images/' + req.file.filename });
+})
+
 
 app.get('/publication', (req,res) => {
     try {
@@ -28,7 +64,8 @@ app.get('/publication', (req,res) => {
 app.get('/publication/:id', (req,res) => {
     try {
         sequelize.authenticate();
-        sequelize.query('select * from publication').then(([results, metadata]) => {
+        sequelize.query('select * from publication')
+            .then(([results, metadata]) => {
             try {
                 const publications = results;
                 const publicationId = parseInt(req.params.id);
@@ -50,8 +87,10 @@ app.get('/publication/:id', (req,res) => {
 
 app.post('/publication', (req, res) => {
     try {
+        console.log(req.body);
         sequelize.authenticate();
-        sequelize.query(`insert into publication (name, author, description, content) VALUES ("${req.body.name}", "${req.body.author}", "${req.body.description}", "${req.body.content}")`).then(([results, metadata]) => {
+        sequelize.query(`insert into publication (name, author, pole, description, content, imageUrl) VALUES ('${req.body['name']}', '${req.body['author']}', '${req.body['pole']}', '${req.body['description']}', '${req.body['content']}', '${req.body['thumbnail']}')`)
+            .then(([results, metadata]) => {
             try {
                 sequelize.query('select * from publication').then(([results, metadata]) => {
                     res.status(200).json(results);
@@ -70,7 +109,8 @@ app.post('/publication', (req, res) => {
 app.put('/publication/:id', (req, res)=>{
     try {
         sequelize.authenticate();
-        sequelize.query(`update publication set name = '${req.body['name']}', author = '${req.body['author']}', description = '${req.body['description']}', content = '${req.body['content']}' where id = ${parseInt(req.params.id)};`).then(([results, metadata]) => {
+        sequelize.query(`update publication set name = '${req.body['name']}', author = '${req.body['author']}', pole = '${req.body['pole']}', description = '${req.body['description']}', content = '${req.body['content']}', imageUrl = '${req.body['thumbnail']}' where id = ${parseInt(req.params.id)};`)
+            .then(([results, metadata]) => {
             try {
                 sequelize.query('select * from publication').then(([results, metadata]) => {
                     res.status(200).json(results);
@@ -104,6 +144,7 @@ app.delete('/publication/:id', (req, res) => {
         res.status(500).json({"error": "unable to connect to database"});
     }
 })
+
 
 app.get('/event', (req,res) => {
     try {
@@ -144,7 +185,7 @@ app.get('/event/:id', (req,res) => {
 app.post('/event', (req, res) => {
     try {
         sequelize.authenticate();
-        sequelize.query(`insert into event (name, author, description, content) VALUES ("${req.body.name}", "${req.body.author}", "${req.body.description}", "${req.body.content}")`).then(([results, metadata]) => {
+        sequelize.query(`insert into event (name, author, pole, description, content, imageUrl) VALUES ('${req.body.name}', '${req.body['author']}', '${req.body['pole']}', '${req.body['description']}', '${req.body['content']}', '${req.body['thumbnail']}')`).then(([results, metadata]) => {
             try {
                 sequelize.query('select * from event').then(([results, metadata]) => {
                     res.status(200).json(results);
@@ -163,7 +204,7 @@ app.post('/event', (req, res) => {
 app.put('/event/:id', (req, res)=>{
     try {
         sequelize.authenticate();
-        sequelize.query(`update event set name = '${req.body['name']}', author = '${req.body['author']}', description = '${req.body['description']}', content = '${req.body['content']}' where id = ${parseInt(req.params.id)};`).then(([results, metadata]) => {
+        sequelize.query(`update event set name = '${req.body['name']}', author = '${req.body['author']}', pole = '${req.body['pole']}', description = '${req.body['description']}', content = '${req.body['content']}', imageUrl = '${req.body['thumbnail']}' where id = ${parseInt(req.params.id)};`).then(([results, metadata]) => {
             try {
                 sequelize.query('select * from event').then(([results, metadata]) => {
                     res.status(200).json(results);
