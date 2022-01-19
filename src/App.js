@@ -7,6 +7,9 @@ import {Office} from "./Component/Pages/Office";
 import {About} from "./Component/Pages/About";
 import {Partner} from "./Component/Pages/Partner";
 import {Admin} from "./Component/Pages/Admin";
+import {RolePlayingGame} from "./Component/Pages/Pole/RolePlayingGame";
+import {QuestBoard} from "./Component/Pages/Pole/QuestBoard";
+import {Wargame} from "./Component/Pages/Pole/Wargame";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
                   <Route path={"/about"} element={<About />}/>
                   <Route path={"/partner"} element={<Partner />}/>
                   <Route path={"/admin"} element={<Admin />}/>
+                  <Route path={"/pole/rpg"} element={<RolePlayingGame />}/>
+                  <Route path={"/pole/wargame"} element={<Wargame />}/>
+                  <Route path={"/pole/rpg/quests"} element={<QuestBoard />}/>
                   <Route path={"/"} element={<Home />}/>
               </Routes>
               <Footer />
