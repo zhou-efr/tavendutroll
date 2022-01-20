@@ -1,4 +1,4 @@
-import {BASE_API} from "../../Constant";
+import {BASE_API, QUESTS_URL, RPG_URL, WARGAME_URL} from "../../Constant";
 import {useEffect, useState} from "react";
 import wargame from "../../images/wargame.png";
 import jdr from "../../images/jdr.png";
@@ -57,7 +57,7 @@ export const Home = () => {
                         </div>
                     }
                     <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/5"} >
-                        <Link to={'/pole/wargame'}>
+                        <Link to={WARGAME_URL}>
                                 <img className={"w-full h-1/2 object-contain"} src={wargame} alt={"wargame"} />
                                 <div className={"w-full h-1/2 p-8 overflow-hidden"}>
                                     <h2 className={"text-2xl"}>Pole Wargame</h2>
@@ -72,7 +72,7 @@ export const Home = () => {
             <div className="flex flex-col justify-center">
                 <div className="flex flex-row justify-between items-center ml-24 h-1/4 w-full m-10">
                     <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/5"} >
-                        <Link to={'/pole/rpg'}>
+                        <Link to={RPG_URL}>
                             <img className={"w-full h-1/2 object-cover"} src={jdr} alt={"wargame"} />
                             <div className={"w-full h-1/2 p-8 overflow-hidden"}>
                                 <h2 className={"text-2xl"}>Pole jdr</h2>
@@ -83,17 +83,19 @@ export const Home = () => {
                         </Link>
                     </div>
                     { questsLoad &&
-                        <div className="flex flex-row justify-center p-24 pl-8 pr-60">
-                            <img className={"w-48 h-full overflow-hidden object-cover"} alt={"post"} src={quests[d].imageUrl}/>
-                            <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
-                                <h2 className={"text-xl font-bold"}>
-                                    {quests[d].name}
-                                </h2>
-                                <p className={"text-base"}>
-                                    {quests[d].description}
-                                </p>
+                        <Link to={QUESTS_URL}>
+                            <div className="flex flex-row justify-center p-24 pl-8 pr-60">
+                                    <img className={"w-48 h-full overflow-hidden object-cover"} alt={"post"} src={quests[d].imageUrl}/>
+                                    <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
+                                        <h2 className={"text-xl font-bold"}>
+                                            {quests[d].name}
+                                        </h2>
+                                        <p className={"text-base"}>
+                                            {quests[d].description}
+                                        </p>
+                                    </div>
                             </div>
-                        </div>
+                        </Link>
                     }
                     {
                         false ? (

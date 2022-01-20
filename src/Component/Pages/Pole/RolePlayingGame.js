@@ -6,7 +6,7 @@ export const RolePlayingGame = (props) => {
     return (
         <div className={'flex flex-col items-center justify-center w-full'}>
             <div className={'flex flex-col items-center justify-center w-3/4'}>
-                <h1 className={'text-4xl'}>Jeux de Role</h1>
+                <h1 className={'text-8xl mt-8 font-zelda'}>Jeux de Role</h1>
                 <div className={'flex flex-col items-center justify-center'}>
                     <p className={'text-center my-3'}>
                         Le pôle jeux de rôles est aussi vieux que l’association, son importance n’est donc pas à négliger.
