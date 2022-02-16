@@ -1,6 +1,9 @@
 import rpgBanner from "../../../images/rpg.jpg";
 import quest from "../../../images/quest.jpg";
 import rpgGames from "../../../images/tdtrpg.png";
+import split from "../../../images/split.png";
+import {Link} from "react-router-dom";
+import {QUESTS_URL} from "../../../Constant";
 
 export const RolePlayingGame = (props) => {
     return (
@@ -19,14 +22,19 @@ export const RolePlayingGame = (props) => {
                         Lors de la réouverture des portes de l’association en septembre, et lors de l’inscription de nouveaux membres, un intérêt plus important que les années précédentes pour le jeu de rôle a été noté. Nous faisions en sorte d’être ouvert tous les jours, et le plus longtemps possible à chaque fois, et pas une fois la Taverne du Troll ne fût vide. Ces personnes n’étaient pas que les membres de l’année précédente, bien au contraire. Nous avons pu recruter énormément de nouveaux venus, comme les L1.
                     </p>
                 </div>
-                <div className={'flex flex-row justify-around w-3/4'}>
-                    <div className="flex flex-col justify-center relative items-start h-64">
-                        <img className={"filter blur-sm absolute h-full w-screen object-contain top-0 left-0 z-0"} src={quest} alt={'quest'}/>
-                        <h3 className={"text-xl m-16 z-10"}>Tableau des quêtes</h3>
-                    </div>
-                    <div className="flex flex-col justify-center relative items-start h-64">
-                        <img className={"filter blur-sm absolute h-full w-screen object-contain top-0 left-0 z-0"} src={rpgGames} alt={'quest'}/>
-                        <h3 className={"text-xl m-16 z-10"}>Liste des jeux</h3>
+                <div className={'h-48 w-1/2 relative m-10 overflow-hidden'}>
+                    <img className={"absolute top-0 left-0 z-0"} alt={"windows xp bg"} src={split}/>
+                    <div className={"flex flex-row h-full justify-center relative items-center z-50"}>
+                        <Link to={QUESTS_URL}>
+                            <div className={"flex flex-col hover:text-gray-300 w-48 border-r-white border-r text-white"}>
+                                <h3 className={"text-xl font-bold"}>Tableau des quêtes</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                        </Link>
+                        <div className={"flex flex-col hover:text-gray-300 pl-6 w-48 text-white"}>
+                            <h3 className={"text-xl font-bold"}>Liste des jeux</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
                     </div>
                 </div>
             </div>

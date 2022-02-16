@@ -6,11 +6,25 @@ import {Home} from "./Component/Pages/Home";
 import {Office} from "./Component/Pages/Office";
 import {About} from "./Component/Pages/About";
 import {Partner} from "./Component/Pages/Partner";
-import {Admin} from "./Component/Pages/Admin";
+import {Admin} from "./Component/Pages/Pole/Admin/Admin";
 import {RolePlayingGame} from "./Component/Pages/Pole/RolePlayingGame";
 import {QuestBoard} from "./Component/Pages/Pole/QuestBoard";
 import {Wargame} from "./Component/Pages/Pole/Wargame";
-import {ABOUT_URL, ADMIN_URL, HOME_URL, OFFICE_URL, PARTNER_URL, QUESTS_URL, RPG_URL, WARGAME_URL} from "./Constant";
+import {
+    ABOUT_URL,
+    ADMIN_URL, EVENTS_URL, GAME_LIST_URL,
+    HOME_URL,
+    OFFICE_URL,
+    PARTNER_URL,
+    QUESTS_URL,
+    RECORDS_URL,
+    RPG_URL,
+    WARGAME_URL
+} from "./Constant";
+import {Quest} from "./Component/Pages/Pole/Quest";
+import {Record} from "./Component/Pages/Record";
+import {Event} from "./Component/Pages/Event";
+import {GameList} from "./Component/Pages/Pole/list/GameList";
 
 function App() {
   return (
@@ -25,6 +39,10 @@ function App() {
                   <Route path={RPG_URL} element={<RolePlayingGame />}/>
                   <Route path={WARGAME_URL} element={<Wargame />}/>
                   <Route path={QUESTS_URL} element={<QuestBoard />}/>
+                  <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
+                  <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
+                  <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
+                  <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
                   <Route path={HOME_URL} element={<Home />}/>
               </Routes>
               <Footer />

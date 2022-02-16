@@ -7,7 +7,8 @@ module.exports = {
     },
     extend: {
       colors : {
-        'tdt-brown': '#6E4E3A'
+        'tdt-brown': '#6E4E3A',
+        'item': 'rgba(0,0,0,0.87)'
       },
       backgroundImage: {
         'wooden-header': "url('./images/header.png')",

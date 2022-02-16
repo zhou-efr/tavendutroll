@@ -54,7 +54,7 @@ export const Footer = (props) => {
               <div className={"flex flex-col items-end "}>
                   <div className={"flex flex-row pb-3 justify-center items-center"}>
                       <p className={'text-sm pr-2'}>follow us : </p>
-                      {icons.map((img, k) => <a href={img[1]}><img className={'w-8'} src={img[0]} key={k} alt={'logo'}/></a> )}
+                      {icons.map((img, k) => <a href={img[1]} key={k}><img className={'w-8'} src={img[0]} alt={'logo'}/></a> )}
                   </div>
                   <a href={'https://www.starplayer.fr/'}><img src={starplayer} alt={'starplayer logo'} className={'w-16'}/></a>
               </div>
