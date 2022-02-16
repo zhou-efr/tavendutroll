@@ -1,4 +1,5 @@
 export const Item = (props) => {
+    // TODO: create global Item component (cf Quest component)
     return (
         <div className={"aspect-square w-2/3 relative"}>
             <img src={props.game.imageUrl} className={"object-cover h-full w-full"} alt={"background - " + props.name}/>

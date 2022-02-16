@@ -41,6 +41,8 @@ export const Quest = (props) => {
             content: ''});
     };
 
+    // TODO: add quest as admin
+    // TODO: add quest as user
     return (
         <div className={"grid grid-cols-2 w-full"}>
             <h2 className={'text-2xl'}>

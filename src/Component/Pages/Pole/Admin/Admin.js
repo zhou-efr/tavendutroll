@@ -8,6 +8,7 @@ export const Admin = () => {
     const [panda, setLogin] = useState(false);
     const [post, setPost] = useState(true);
     const [event, setEvent] = useState(false);
+    // TODO: add game
     const [game, setGame] = useState(false);
     const [quest, setQuest] = useState(false);
 

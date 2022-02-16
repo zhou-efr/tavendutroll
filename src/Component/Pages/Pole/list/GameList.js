@@ -8,6 +8,8 @@ export const GameList = (props) => {
     const [gameListLoad, setGameListLoad] = useState(false);
     let { type } = useParams() || props['type'] || false;
 
+    // TODO: game list page (as pinterest ?)
+
     useEffect(() => {
         fetch(BASE_API+'game', {method: 'GET',})
             .then(res => res.json())

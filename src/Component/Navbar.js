@@ -7,6 +7,7 @@ export const Navbar = (props) => {
     useEffect(() => {
         document.title = "taverne du troll";
     }, [])
+    // TODO: make navbar responsive
     return (
         <div className={"fixed z-20 bottom-0 overflow-hidden w-full h-16 bg-tdt-brown flex flex-row justify-start items-center"}>
           <Link to={HOME_URL}><img className={'object-contain m-1 h-16'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>

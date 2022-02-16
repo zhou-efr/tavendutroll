@@ -8,6 +8,8 @@ export const Quest = (props) => {
     const [containerCss, setContainerCss] = useState("");
     const [questLoad, setQuestLoad] = useState(false);
 
+    // TODO: make quest component universal (target url in props ?)
+
     useEffect(() => {
         if(!props.id){
             console.log("id way");

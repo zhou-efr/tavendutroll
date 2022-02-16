@@ -16,7 +16,7 @@ export const Footer = (props) => {
         [linkedin, 'https://www.linkedin.com/company/efreitavernedutroll/?originalSubdomain=fr'],
         // [twitch, '']
     ];
-
+    // TODO: make footer responsive
     return (
       <div className={"w-screen h-1/2 mb-16 flex flex-col justify-between bg-tdt-brown text-white pr-10 pb-16"}>
           <div className={"flex flex-row w-full h-2/3 border-b border-b-white ml-3 mb-2 justify-between pb-4"}>
