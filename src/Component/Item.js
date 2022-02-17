@@ -11,7 +11,7 @@ export const Item = (props) => {
     useEffect(() => {
         if(props.call === "id"){
             console.log("id way");
-            setContainerCss("w-screen flex justify-center items-center");
+            setContainerCss("w-screen flex justify-center items-center mb-6 mt-6");
             fetch(props.url+'/'+(parseInt(id)+1).toString(), {method: 'GET',})
                 .then(res => res.json())
                 .then((res) => {setItem(res);setItemLoad(!!res);})
@@ -27,10 +27,10 @@ export const Item = (props) => {
             {
                 itemLoad?(
                     <div className={`border p-6 rounded-xl flex flex-col justify-start p-6 items-center ${containerCss? "w-3/4": ""}`}>
-                        <div className={"flex flex-wrap md:flex-nowrap gap-12"}>
-                            <img className={"rounded-xl md:w-1/2"} src={item.imageUrl} alt={"quest"}/>
+                        <div className={"flex flex-wrap w-full md:flex-nowrap gap-12 justify-center"}>
+                            <img className={"rounded-xl md:w-1/3"} src={item.imageUrl} alt={"quest"}/>
                             <div className={"flex flex-col justify-center"}>
-                                <div className={"flex flex-wrap gap-5 items-center m-6 md:m-0"}>
+                                <div className={"flex flex-wrap md:flex-row gap-5 items-center m-6 md:m-0 justify-center"}>
                                     <p className={"text-4xl font-zelda"}>{item.name}</p>
 
                                     {button && <button className={"shadow-md rounded p-2 bg-tdt-brown text-white"}
