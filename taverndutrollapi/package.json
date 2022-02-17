@@ -4,7 +4,8 @@
   "description": "API for the website of the taverne du troll",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "sequelize": "^6.13.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }

@@ -31,6 +31,10 @@ const games = require("./components/game");
 app.use(express.json())
 app.use(cors())
 
+app.get('/', (req, res) => {
+    res.send("Taverne Du Troll API");
+});
+
 app.get('/images/:name', (req, res) => {
     let imageName = req.params.name
     res.sendFile(`C:\\Users\\thepa\\WebstormProjects\\tavernedutroll\\taverndutrollapi\\public\\${imageName}`);
