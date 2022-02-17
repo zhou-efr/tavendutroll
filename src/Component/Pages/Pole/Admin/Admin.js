@@ -3,6 +3,7 @@ import {BASE_API_URL} from "../../../../Constant";
 import {Post} from "./Post";
 import {Event} from "./Event";
 import {Quest} from "./Quest";
+import {Game} from "./Game";
 
 export const Admin = () => {
     const [panda, setLogin] = useState(false);
@@ -78,6 +79,7 @@ export const Admin = () => {
                     </div>
                     { post && <Post /> }
                     { event && <Event /> }
+                    { game && <Game /> }
                     { quest && <Quest /> }
                 </div>
             ):(

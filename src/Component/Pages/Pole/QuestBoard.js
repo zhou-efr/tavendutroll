@@ -19,7 +19,7 @@ export const QuestBoard = (props) => {
                 {
                     questsLoad && quests.map((quest, k) => {
                         return (
-                            <Item call={"object"} item={quest} button={"Rejoindre"} content={false} link={QUESTS_URL+'/'+k}/>
+                            <Item call={"object"} item={quest} button={"Rejoindre"} content={false} link={QUESTS_URL+'/'+quest.id}/>
                         );
                     })
                 }

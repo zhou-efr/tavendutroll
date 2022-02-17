@@ -35,7 +35,7 @@ games.get('/:id', (req,res) => {
                     const gameId = parseInt(req.params.id);
                     const game = games.filter(item => item.id === gameId)[0];
 
-                    if (!game) throw `post ${gameId} not found`;
+                    if (!game) throw `game ${gameId} not found`;
 
                     res.status(200).json(game);
                 } catch (e) {
@@ -53,7 +53,7 @@ games.post('', (req, res) => {
     try {
         console.log(req.body);
         sequelize.authenticate();
-        sequelize.query(`insert into game (name, author, pole, description, content, imageUrl) VALUES ('${req.body['name']}', '${req.body['author']}', '${req.body['pole']}', '${req.body['description']}', '${req.body['content']}', '${req.body['thumbnail']}')`)
+        sequelize.query(`insert into game (name, support, pole, description, content, imageUrl, available) VALUES ('${req.body['name']}', '${req.body['support']}', '${req.body['pole']}', '${req.body['description']}', '${req.body['content']}', '${req.body['thumbnail']}', ${req.body['available']});`)
             .then(([results, metadata]) => {
                 try {
                     sequelize.query('select * from game').then(([results, metadata]) => {
@@ -73,7 +73,7 @@ games.post('', (req, res) => {
 games.put('/:id', (req, res)=>{
     try {
         sequelize.authenticate();
-        sequelize.query(`update game set name = '${req.body['name']}', author = '${req.body['author']}', pole = '${req.body['pole']}', description = '${req.body['description']}', content = '${req.body['content']}', imageUrl = '${req.body['thumbnail']}' where id = ${parseInt(req.params.id)};`)
+        sequelize.query(`update game set name = '${req.body['name']}', support = '${req.body['support']}', pole = '${req.body['pole']}', description = '${req.body['description']}', content = '${req.body['content']}', imageUrl = '${req.body['thumbnail']}', available = ${req.body['available']} where id = ${parseInt(req.params.id)};`)
             .then(([results, metadata]) => {
                 try {
                     sequelize.query('select * from game').then(([results, metadata]) => {

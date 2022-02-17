@@ -33,7 +33,7 @@ export const GameList = (props) => {
                         {
                             gameList.map((item, index) => {
                                 return (
-                                    <Item call={"object"} item={item} content={false} link={GAME_URL+'/'+index}/>
+                                    <Item call={"object"} item={item} content={false} link={GAME_URL+'/'+item.id}/>
                                 );
                             })
                         }

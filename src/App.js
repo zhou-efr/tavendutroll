@@ -12,7 +12,7 @@ import {QuestBoard} from "./Component/Pages/Pole/QuestBoard";
 import {Wargame} from "./Component/Pages/Pole/Wargame";
 import {
     ABOUT_URL,
-    ADMIN_URL, EVENTS_URL, GAME_LIST_URL,
+    ADMIN_URL, EVENTS_URL, GAME_LIST_URL, GAME_URL,
     HOME_URL,
     OFFICE_URL,
     PARTNER_URL,
@@ -25,6 +25,7 @@ import {Quest} from "./Component/Pages/Pole/Quest";
 import {Record} from "./Component/Pages/Record";
 import {Event} from "./Component/Pages/Event";
 import {GameList} from "./Component/Pages/Pole/list/GameList";
+import {Game} from "./Component/Pages/Pole/list/Game";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
                   <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
                   <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
                   <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
+                  <Route path={GAME_URL+'/:id'} element={<Game />}/>
                   <Route path={HOME_URL} element={<Home />}/>
               </Routes>
               <Footer />

@@ -67,7 +67,7 @@ export const Home = () => {
             <div className="flex flex-col justify-center">
                 <div className="flex flex-row justify-between h-1/4 w-full m-10">
                     { postsLoad &&
-                        <Link to={RECORDS_URL+'/'+a.toString()}>
+                        <Link to={RECORDS_URL+'/'+posts[a].id}>
                             <div className="flex flex-row justify-center p-24">
                                 <img className={"w-96 h-48 object-cover"} alt={"post"} src={posts[a].imageUrl}/>
                                 <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
@@ -108,7 +108,7 @@ export const Home = () => {
                         </Link>
                     </div>
                     { questsLoad &&
-                        <Link to={QUESTS_URL+'/'+d.toString()}>
+                        <Link to={QUESTS_URL+'/'+quests[d].id}>
                             <div className="flex flex-row justify-center p-24 pl-8 pr-60">
                                     <img className={"w-48 h-full overflow-hidden object-cover"} alt={"post"} src={quests[d].imageUrl}/>
                                     <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
@@ -142,7 +142,7 @@ export const Home = () => {
             </div>
             {
                 eventsLoad &&
-                <Link to={EVENTS_URL+'/'+b.toString()}>
+                <Link to={EVENTS_URL+'/'+events[b].id}>
                     <div className="flex flex-col justify-center relative items-start h-96 w-screen">
                         <img className={"absolute h-full w-screen object-cover top-0 left-0 z-0"} src={events[b].imageUrl} alt={events[b].name}/>
                         <div className="flex flex-col m-8 justify-center relative items-start">
@@ -155,7 +155,7 @@ export const Home = () => {
             <div className="flex flex-col justify-center pt-10">
                 <div className="flex flex-row justify-between h-1/4 w-full m-10">
                     { gamesLoad &&
-                        <Link to={GAME_URL+'/'+e.toString()}>
+                        <Link to={GAME_URL+'/'+games[e].id}>
                             <div className="flex flex-row justify-center p-24">
                                 <img className={"w-96 h-48 object-contain"} alt={"post"} src={games[e].imageUrl}/>
                                 <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>

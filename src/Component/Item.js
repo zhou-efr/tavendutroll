@@ -23,7 +23,7 @@ export const Item = (props) => {
         if(props.call === "id"){
             console.log("id way");
             setContainerCss("w-screen flex justify-center items-center mb-6 mt-6");
-            fetch(props.url+'/'+(parseInt(id)+1).toString(), {method: 'GET',})
+            fetch(props.url+'/'+id, {method: 'GET',})
                 .then(res => res.json())
                 .then((res) => {setItem(res);setItemLoad(!!res);})
                 .catch((res) => {console.log(res)})
