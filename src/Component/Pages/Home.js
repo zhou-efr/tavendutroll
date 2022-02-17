@@ -13,7 +13,7 @@ import {useEffect, useState} from "react";
 import wargame from "../../images/wargame.png";
 import TCG from "../../images/tcg.png";
 import jdr from "../../images/jdr.png";
-import frame from "../../images/Frame.png";
+import frame from "../../images/Frame 9.png";
 import {Link} from "react-router-dom";
 
 export const Home = () => {
@@ -137,8 +137,8 @@ export const Home = () => {
                     <div className="flex flex-col justify-center relative items-start h-96 w-screen">
                         <img className={"absolute h-full w-screen object-cover top-0 left-0 z-0"} src={events[b].imageUrl} alt={events[b].name}/>
                         <div className="flex flex-col m-8 justify-center relative items-start">
-                            <img className={"absolute h-full w-screen object-contain top-0 left-0 z-0"} src={frame} alt={'frame'}/>
-                            <h3 className={"text-5xl p-40 m-16 z-10"}>{events[b].name}</h3>
+                            <img className={"absolute h-1/2 w-screen object-contain z-0"} src={frame} alt={'frame'}/>
+                            <h3 className={"text-5xl p-40 text-white m-16 z-10 max-w-xl break-words overflow-hidden"}>{events[b].name}</h3>
                         </div>
                     </div>
                 </Link>
