@@ -16,7 +16,7 @@ export const Footer = () => {
     ];
 
     return (
-      <div className={"w-screen mb-16 flex flex-col justify-between bg-tdt-brown text-white pr-10 pb-16"}>
+      <div className={"w-screen md:mb-16 flex flex-col justify-between bg-tdt-brown text-white pr-10 pb-16"}>
           <div className={"flex flex-wrap w-full h-2/3 border-b border-b-white ml-3 mb-2 justify-between pb-4"}>
               <div className={"flex flex-wrap"}>
                   <Link to={HOME_URL}><img className={'object-contain h-48'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>
