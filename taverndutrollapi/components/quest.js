@@ -36,7 +36,7 @@ quests.get('/:id', (req,res) => {
 
                 if (!quest) throw `post ${questId} not found`;
 
-                res.status(200).json(quests);
+                res.status(200).json(quest);
             } catch (e) {
                 console.log('Impossible de se connecter, erreur suivante :', e);
                 res.status(404).json({"error": "post not found"});

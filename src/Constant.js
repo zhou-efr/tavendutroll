@@ -1,4 +1,7 @@
 export const BASE_API = 'http://localhost:8080/';
+export const RECORD_API = BASE_API+'publication';
+export const QUEST_API = BASE_API+'quest';
+export const EVENT_API = BASE_API+'event';
 
 export const RPG_URL = '/rpg';
 export const QUESTS_URL = "/rpg/quests";

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {BASE_API} from "../../../../Constant";
 import {useParams} from "react-router";
-import {Item} from "./Item";
+import {Item} from "../../../Item";
 
 export const GameList = (props) => {
     const [gameList, setGameList] = useState([]);

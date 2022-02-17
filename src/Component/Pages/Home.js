@@ -1,4 +1,14 @@
-import {BASE_API, EVENTS_URL, QUESTS_URL, RECORDS_URL, RPG_URL, TCG_URL, WARGAME_URL} from "../../Constant";
+import {
+    EVENT_API,
+    EVENTS_URL,
+    QUEST_API,
+    QUESTS_URL,
+    RECORD_API,
+    RECORDS_URL,
+    RPG_URL,
+    TCG_URL,
+    WARGAME_URL
+} from "../../Constant";
 import {useEffect, useState} from "react";
 import wargame from "../../images/wargame.png";
 import TCG from "../../images/tcg.png";
@@ -14,23 +24,25 @@ export const Home = () => {
     const [quests, setQuests] = useState([]);
     const [questsLoad, setQuestsLoad] = useState(false);
 
+    // TODO: responsive
+
     useEffect(() => {
         document.title = "taverne du troll";
     }, [])
     useEffect(() => {
-        fetch(BASE_API+'quest', {method: 'GET',})
+        fetch(QUEST_API, {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setQuests(res);setQuestsLoad(res.length);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(BASE_API+'publication', {method: 'GET',})
+        fetch(RECORD_API, {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setPosts(res);setPostsLoad(res.length);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(BASE_API+'event', {method: 'GET',})
+        fetch(EVENT_API, {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setEvents(res);setEventsLoad(res.length);})
             .catch((res) => {console.log(res)})

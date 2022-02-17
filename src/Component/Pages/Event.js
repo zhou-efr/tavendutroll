@@ -1,11 +1,10 @@
 import {useParams} from "react-router";
+import {Item} from "../Item";
+import {EVENT_API} from "../../Constant";
 
 export const Event = (props) => {
     let { id } = useParams() || props['id'];
-    // TODO: event page (universal item ?)
     return (
-        <div>
-            Event-{id}
-        </div>
+        <Item id={id} call={"id"} url={EVENT_API} />
     );
 }
