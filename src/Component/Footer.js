@@ -1,14 +1,12 @@
 import starplayer from '../images/starplayer.png';
 import discord from '../images/DiscordLogo.png';
 import facebook from '../images/FacebookLogo.png';
-import instagram from '../images/InstagramLogo.png';
 import linkedin from '../images/LinkedinLogo.png';
-import twitch from '../images/TwitchLogo.png';
 import logo from "../images/logo.png";
 import {Link} from "react-router-dom";
 import {ABOUT_URL, HOME_URL, PARTNER_URL} from "../Constant";
 
-export const Footer = (props) => {
+export const Footer = () => {
     let icons = [
         [discord, 'https://discord.gg/8x5DwZxdzd'],
         [facebook, 'https://www.facebook.com/EfreiTaverneduTroll/'],
@@ -16,11 +14,11 @@ export const Footer = (props) => {
         [linkedin, 'https://www.linkedin.com/company/efreitavernedutroll/?originalSubdomain=fr'],
         // [twitch, '']
     ];
-    // TODO: make footer responsive
+
     return (
-      <div className={"w-screen h-1/2 mb-16 flex flex-col justify-between bg-tdt-brown text-white pr-10 pb-16"}>
-          <div className={"flex flex-row w-full h-2/3 border-b border-b-white ml-3 mb-2 justify-between pb-4"}>
-              <div className={"flex flex-row"}>
+      <div className={"w-screen mb-16 flex flex-col justify-between bg-tdt-brown text-white pr-10 pb-16"}>
+          <div className={"flex flex-wrap w-full h-2/3 border-b border-b-white ml-3 mb-2 justify-between pb-4"}>
+              <div className={"flex flex-wrap"}>
                   <Link to={HOME_URL}><img className={'object-contain h-48'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>
                   <div className={"pt-3 w-72"}>
                       <h3 className={"text-2xl font-bold pb-2"}>Taverne Du Troll</h3>
@@ -32,7 +30,7 @@ export const Footer = (props) => {
                       </p>
                   </div>
               </div>
-              <div className={"flex flex-row-reverse"}>
+              <div className={"flex flex-wrap-reverse"}>
                   <div className={"pt-3 w-56"}>
                       <h3 className={"text-2xl font-bold pb-2"}>Contact</h3>
                       <Link to={ABOUT_URL}><p className={'text-sm'}>About us</p></Link>
@@ -49,10 +47,10 @@ export const Footer = (props) => {
                   </div>
               </div>
           </div>
-          <div className={"flex flex-row w-full justify-between pb-1 h-1/3"}>
+          <div className={"flex flex-wrap w-full justify-between pb-1 h-1/3"}>
               <p className={"text-sm pl-6"}>association loi 1901</p>
               <div className={"flex flex-col items-end "}>
-                  <div className={"flex flex-row pb-3 justify-center items-center"}>
+                  <div className={"flex flex-wrap pb-3 justify-center items-center"}>
                       <p className={'text-sm pr-2'}>follow us : </p>
                       {icons.map((img, k) => <a href={img[1]} key={k}><img className={'w-8'} src={img[0]} alt={'logo'}/></a> )}
                   </div>
