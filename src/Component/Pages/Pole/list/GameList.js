@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {BASE_API} from "../../../../Constant";
+import {BASE_API_URL, GAME_URL} from "../../../../Constant";
 import {useParams} from "react-router";
 import {Item} from "../../../Item";
 
@@ -11,9 +11,17 @@ export const GameList = (props) => {
     // TODO: game list page (as pinterest ?)
 
     useEffect(() => {
-        fetch(BASE_API+'game', {method: 'GET',})
+        fetch(BASE_API_URL+'game', {method: 'GET',})
             .then(res => res.json())
-            .then((res) => {setGameList(res);setGameListLoad(res.length);})
+            .then((res) => {
+                setGameListLoad(res.length);
+                if(type){
+                    const game = res.filter(item => item.pole === type);
+                    setGameList(game);
+                }else {
+                    setGameList(res);
+                }
+            })
             .catch((res) => {console.log(res)})
     }, [])
     // const game = games.filter(item => item.id === gameId)[0];
@@ -21,11 +29,11 @@ export const GameList = (props) => {
         <div className={"w-screen p-10 flex justify-center items-center"}>
             {
                 gameListLoad && (
-                    <div className={"w-full grid grid-cols-1 md:grid-cols-3 gap-12"}>
+                    <div className={"w-full flex flex-wrap gap-12"}>
                         {
                             gameList.map((item, index) => {
                                 return (
-                                    <Item game={item} />
+                                    <Item call={"object"} item={item} content={false} link={GAME_URL+'/'+index}/>
                                 );
                             })
                         }

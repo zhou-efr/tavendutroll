@@ -1,9 +1,7 @@
-import rpgBanner from "../../../images/rpg.jpg";
-import quest from "../../../images/quest.jpg";
 import rpgGames from "../../../images/tdtrpg.png";
 import split from "../../../images/split.png";
 import {Link} from "react-router-dom";
-import {QUESTS_URL} from "../../../Constant";
+import {GAME_LIST_URL, QUESTS_URL} from "../../../Constant";
 
 export const RolePlayingGame = (props) => {
     return (
@@ -31,10 +29,12 @@ export const RolePlayingGame = (props) => {
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                             </div>
                         </Link>
-                        <div className={"flex flex-col hover:text-gray-300 pl-6 w-48 text-white"}>
-                            <h3 className={"text-xl font-bold"}>Liste des jeux</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
+                        <Link to={GAME_LIST_URL+'/RolePlayGame'}>
+                            <div className={"flex flex-col hover:text-gray-300 pl-6 w-48 text-white"}>
+                                <h3 className={"text-xl font-bold"}>Liste des jeux</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

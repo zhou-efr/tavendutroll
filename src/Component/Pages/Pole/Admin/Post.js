@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {BASE_API} from "../../../../Constant";
+import {BASE_API_URL} from "../../../../Constant";
 
 export const Post = (props) => {
     const [post, setPost] = useState({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''})
@@ -8,7 +8,7 @@ export const Post = (props) => {
         let data = new FormData();
         data.append('file', post.thumbnail[0])
 
-        let thumbnail = await fetch(BASE_API + 'upload', {method: 'POST', body: data}).catch(e => null)
+        let thumbnail = await fetch(BASE_API_URL + 'upload', {method: 'POST', body: data}).catch(e => null)
         thumbnail = await thumbnail.json();
 
         if (!thumbnail){
@@ -17,7 +17,7 @@ export const Post = (props) => {
 
         data = post;
         data.thumbnail = thumbnail.fileUrl;
-        let res = await fetch(BASE_API+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => null)
+        let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => null)
         res = await res.json();
 
         if (!res){

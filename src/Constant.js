@@ -1,7 +1,8 @@
-export const BASE_API = 'http://localhost:8080/';
-export const RECORD_API = BASE_API+'publication';
-export const QUEST_API = BASE_API+'quest';
-export const EVENT_API = BASE_API+'event';
+export const BASE_API_URL = 'http://localhost:8080/';
+export const RECORD_API_URL = BASE_API_URL+'publication';
+export const QUEST_API_URL = BASE_API_URL+'quest';
+export const EVENT_API_URL = BASE_API_URL+'event';
+export const GAME_API_URL = BASE_API_URL+'game';
 
 export const RPG_URL = '/rpg';
 export const QUESTS_URL = "/rpg/quests";
@@ -10,6 +11,7 @@ export const TCG_URL = "/tradingCardGame";
 export const RECORDS_URL = "/records";
 export const EVENTS_URL = "/events";
 export const GAME_LIST_URL = "/games";
+export const GAME_URL = "/games/game";
 
 export const OFFICE_URL = "/office";
 export const ABOUT_URL = "/about";

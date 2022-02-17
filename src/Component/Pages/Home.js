@@ -1,9 +1,9 @@
 import {
-    EVENT_API,
-    EVENTS_URL,
-    QUEST_API,
+    EVENT_API_URL,
+    EVENTS_URL, GAME_API_URL, GAME_URL,
+    QUEST_API_URL,
     QUESTS_URL,
-    RECORD_API,
+    RECORD_API_URL,
     RECORDS_URL,
     RPG_URL,
     TCG_URL,
@@ -23,6 +23,8 @@ export const Home = () => {
     const [eventsLoad, setEventsLoad] = useState(false);
     const [quests, setQuests] = useState([]);
     const [questsLoad, setQuestsLoad] = useState(false);
+    const [games, setGames] = useState([]);
+    const [gamesLoad, setGamesLoad] = useState(false);
 
     // TODO: responsive
 
@@ -30,19 +32,25 @@ export const Home = () => {
         document.title = "taverne du troll";
     }, [])
     useEffect(() => {
-        fetch(QUEST_API, {method: 'GET',})
+        fetch(GAME_API_URL, {method: 'GET',})
+            .then(res => res.json())
+            .then((res) => {setGames(res);setGamesLoad(res.length);})
+            .catch((res) => {console.log(res)})
+    }, [])
+    useEffect(() => {
+        fetch(QUEST_API_URL, {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setQuests(res);setQuestsLoad(res.length);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(RECORD_API, {method: 'GET',})
+        fetch(RECORD_API_URL, {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setPosts(res);setPostsLoad(res.length);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(EVENT_API, {method: 'GET',})
+        fetch(EVENT_API_URL, {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setEvents(res);setEventsLoad(res.length);})
             .catch((res) => {console.log(res)})
@@ -52,6 +60,7 @@ export const Home = () => {
     let b = Math.floor(Math.random() * events.length);
     let c = Math.floor(Math.random() * posts.length);
     let d = Math.floor(Math.random() * quests.length);
+    let e = Math.floor(Math.random() * games.length);
 
     return (
         <div className={'min-h-screen w-5/6'}>
@@ -145,16 +154,16 @@ export const Home = () => {
             }
             <div className="flex flex-col justify-center pt-10">
                 <div className="flex flex-row justify-between h-1/4 w-full m-10">
-                    { postsLoad &&
-                        <Link to={RECORDS_URL+'/'+a.toString()}>
+                    { gamesLoad &&
+                        <Link to={GAME_URL+'/'+e.toString()}>
                             <div className="flex flex-row justify-center p-24">
-                                <img className={"w-96 h-48 object-cover"} alt={"post"} src={posts[a].imageUrl}/>
+                                <img className={"w-96 h-48 object-contain"} alt={"post"} src={games[e].imageUrl}/>
                                 <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
                                     <h2 className={"text-xl font-bold"}>
-                                        {posts[a].name}
+                                        {games[e].name}
                                     </h2>
                                     <p className={"text-base"}>
-                                        {posts[a].description}
+                                        {games[e].description}
                                     </p>
                                 </div>
                             </div>

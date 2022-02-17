@@ -1,18 +1,13 @@
 import {useEffect, useState} from "react";
-import {BASE_API, QUESTS_URL} from "../../../Constant";
-import target from "../../../images/target.png";
-import contact from "../../../images/contact.png";
-import nb from "../../../images/nbplayer.png";
-import note from "../../../images/descr.png";
-import {Link} from "react-router-dom";
-import {Quest} from "./Quest";
+import {BASE_API_URL, QUESTS_URL} from "../../../Constant";
+import {Item} from "../../Item";
 
 export const QuestBoard = (props) => {
     const [quests, setQuests] = useState([]);
     const [questsLoad, setQuestsLoad] = useState(false);
 
     useEffect(() => {
-        fetch(BASE_API+'quest', {method: 'GET',})
+        fetch(BASE_API_URL+'quest', {method: 'GET',})
             .then(res => res.json())
             .then((res) => {setQuests(res);setQuestsLoad(res.length);})
             .catch((res) => {console.log(res)})
@@ -24,7 +19,7 @@ export const QuestBoard = (props) => {
                 {
                     questsLoad && quests.map((quest, k) => {
                         return (
-                            <Quest id={k+1} quest={quest} />
+                            <Item call={"object"} item={quest} button={"Rejoindre"} content={false} link={QUESTS_URL+'/'+k}/>
                         );
                     })
                 }
