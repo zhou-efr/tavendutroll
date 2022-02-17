@@ -8,7 +8,10 @@ export const Quest = (props) => {
         jeux: '',
         thumbnail: null,
         description: '',
-        content: ''})
+        content: '',
+        player: 3,
+        startDate: '',
+    })
 
     const onSubmit = async (e, target) => {
         let data = new FormData();
@@ -27,9 +30,9 @@ export const Quest = (props) => {
         res = await res.json();
 
         if (!res){
-            alert("fail to create post");
+            alert("fail to create quest");
         }else {
-            alert("create post");
+            alert("create quest");
         }
 
         setQuest({
@@ -38,18 +41,17 @@ export const Quest = (props) => {
             jeux: '',
             thumbnail: null,
             description: '',
-            content: ''});
+            content: '',
+            startDate: '',});
     };
-
-    // TODO: add quest as admin
     // TODO: add quest as user
     return (
-        <div className={"grid grid-cols-2 w-full"}>
+        <div className={"grid grid-cols-1 md:grid-cols-2 w-full"}>
             <h2 className={'text-2xl'}>
                 Add Quest
             </h2>
             <div className={"w-1/2 ml-3"}>
-                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'publication')}>
+                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'quest')}>
                     Submit
                 </button>
             </div>
@@ -67,34 +69,25 @@ export const Quest = (props) => {
             </div>
             <div className={"w-1/2 ml-3"}>
                 <h3 className={"text-lg"}>
-                    Author
+                    Author discord id
                 </h3>
                 <input
                     className={" p-1 w-full"}
-                    placeholder={"Author Name"}
-                    value={quest.author}
-                    onChange={(e) => setQuest({...quest, author: e.target.value})}/>
+                    placeholder={"Author Discord Id"}
+                    value={quest.discordId}
+                    onChange={(e) => setQuest({...quest, discordId: e.target.value})}/>
             </div>
 
 
             <div className={"w-1/2 "}>
-                <h3 className={"text-lg mr-3"}>
-                    Pole
+                <h3 className={"text-lg"}>
+                    Game
                 </h3>
-                <select
-                    className={" p-1 w-full bg-white"}
-                    name="pole"
-                    id="pole-select"
-                    value={quest.pole}
-                    onChange={(e) => setQuest({...quest, pole: e.target.value})}>
-                    <option value="">--Select A Pole--</option>
-                    <option value="Common">Common</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Wargame">Wargame</option>
-                    <option value="RolePlayGame">Role Play Game</option>
-                    <option value="TradingCardGame">Trading Card Game</option>
-                    <option value="BoardGame">Board Game</option>
-                </select>
+                <input
+                    className={" p-1 w-full"}
+                    placeholder={"Game name"}
+                    value={quest.jeux}
+                    onChange={(e) => setQuest({...quest, jeux: e.target.value})}/>
             </div>
             <div className={"w-1/2 ml-3"}>
                 <h3 className={"text-lg"}>
@@ -108,7 +101,6 @@ export const Quest = (props) => {
                     // value={post.thumbnail[0]}
                     onChange={(e) => {console.log(quest.thumbnail);setQuest({...quest, thumbnail: e.target.files});}}/>
             </div>
-
 
             <div className={"w-1/2 "}>
                 <h3 className={"text-lg mr-3"}>
@@ -135,6 +127,29 @@ export const Quest = (props) => {
                     placeholder={"Lorem ipsum dolor sit amet"}
                     value={quest.content}
                     onChange={(e) => setQuest({...quest, content: e.target.value})}/>
+            </div>
+
+            <div className={"w-1/2 "}>
+                <h3 className={"text-lg mr-3"}>
+                    Number of players
+                </h3>
+                <input
+                    type={'number'}
+                    name={"player"}
+                    value={quest.player}
+                    onChange={(e) => {console.log(quest.player);setQuest({...quest, player: e.target.value});}}
+                />
+            </div>
+            <div className={"w-1/2 ml-3"}>
+                <h3 className={"text-lg"}>
+                    Start at
+                </h3>
+                <input
+                    type={'datetime-local'}
+                    name={"time"}
+                    value={quest.startDate}
+                    onChange={(e) => {console.log(quest.startDate);setQuest({...quest, startDate: e.target.value});}}
+                />
             </div>
         </div>
     );

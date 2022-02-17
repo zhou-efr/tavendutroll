@@ -9,7 +9,6 @@ export const Admin = () => {
     const [panda, setLogin] = useState(false);
     const [post, setPost] = useState(true);
     const [event, setEvent] = useState(false);
-    // TODO: add game
     const [game, setGame] = useState(false);
     const [quest, setQuest] = useState(false);
 
@@ -48,7 +47,7 @@ export const Admin = () => {
     }
 
     return (
-        <div className={"h-screen flex flex-col justify-center items-center"}>
+        <div className={"min-h-screen flex flex-col justify-center items-center mt-10 mb-10"}>
         {
             panda ? (
                 <div className={"w-4/6 flex flex-col items-start p-5 border rounded-xl drop-shadow-md"}>

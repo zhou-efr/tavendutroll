@@ -43,6 +43,7 @@ function App() {
                   <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
                   <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
                   <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
+                  <Route path={GAME_LIST_URL} element={<GameList />}/>
                   <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
                   <Route path={GAME_URL+'/:id'} element={<Game />}/>
                   <Route path={HOME_URL} element={<Home />}/>

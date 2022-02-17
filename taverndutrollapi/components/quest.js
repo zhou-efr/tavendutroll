@@ -51,7 +51,7 @@ quests.get('/:id', (req,res) => {
 quests.post('/', (req, res) => {
     try {
         sequelize.authenticate();
-        sequelize.query(`insert into quest (name, discordId, description, jeux, player, content, imageUrl) VALUES ('${req.body['name']}', '${req.body['discordId']}', '${req.body['pole']}', '${req.body['description']}', '${req.body['jeux']}', ${req.body['player']}, '${req.body['content']}', '${req.body['thumbnail']}')`).then(([results, metadata]) => {
+        sequelize.query(`insert into quest (name, discordId, description, jeux, player, content, imageUrl, startDate) VALUES ('${req.body['name']}', '${req.body['discordId']}', '${req.body['description']}', '${req.body['jeux']}', ${req.body['player']}, '${req.body['content']}', '${req.body['thumbnail']}', '${req.body['startDate']}')`).then(([results, metadata]) => {
             try {
                 sequelize.query('select * from quest').then(([results, metadata]) => {
                     res.status(200).json(results);
