@@ -10,7 +10,7 @@ export const Item = (props) => {
     const [itemLoad, setItemLoad] = useState(false);
     const [content, setContent] = useState(true);
     const [link, setLink] = useState("#");
-
+    setButton(false);
 
     useEffect(() => {
         if(Object.keys(props).includes("content")){
@@ -32,7 +32,7 @@ export const Item = (props) => {
             setItem(props.item);
             setItemLoad(true);
         }
-    }, [id, props.call, props.item, props.url])
+    }, [id, props.call, props.item, props.url, props])
     return (
         <div className={containerCss}>
             {

@@ -58,7 +58,7 @@ export const Home = () => {
 
     let a = posts.length-1;
     let b = Math.floor(Math.random() * events.length);
-    let c = Math.floor(Math.random() * posts.length);
+    // let c = Math.floor(Math.random() * posts.length);
     let d = Math.floor(Math.random() * quests.length);
     let e = Math.floor(Math.random() * games.length);
 
@@ -125,6 +125,7 @@ export const Home = () => {
                     <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/4 rounded-l"} >
                         <iframe src="https://discord.com/widget?id=357854383985393665&theme=dark"
                                 allowTransparency="true"
+                                title={"discord"}
                                 frameBorder="0"
                                 height={350}
                                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" />

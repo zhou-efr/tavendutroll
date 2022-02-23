@@ -20,7 +20,7 @@ export const GameList = (props) => {
                 }
             })
             .catch((res) => {console.log(res)})
-    }, [])
+    }, [type])
     // const game = games.filter(item => item.id === gameId)[0];
     return (
         <div className={"w-screen p-10 flex justify-center items-center"}>
@@ -30,7 +30,7 @@ export const GameList = (props) => {
                         {
                             gameList.map((item, index) => {
                                 return (
-                                    <Item call={"object"} item={item} content={false} link={GAME_URL+'/'+item.id}/>
+                                    <Item call={"object"} key={index} item={item} content={false} link={GAME_URL+'/'+item.id}/>
                                 );
                             })
                         }

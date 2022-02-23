@@ -1,7 +1,7 @@
-import prez from "../../images/prew.png";
+// import prez from "../../images/prew.png";
 import panda from "../../images/panda.jpg";
 
-export const Office = (props) => {
+export const Office = () => {
   return (
       <div className={''}>
           <div className="flex flex-row justify-around">
