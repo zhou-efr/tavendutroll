@@ -1,0 +1,24 @@
+{
+  "name": "taverndutrollapi",
+  "version": "1.0.0",
+  "description": "API for the website of the taverne du troll",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "multer": "^1.4.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.13.0",
+    "tedious": "^14.3.0"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
