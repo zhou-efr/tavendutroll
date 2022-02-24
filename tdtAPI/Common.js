@@ -49,6 +49,7 @@ const output_res = (res, sql, connection) => {
 const api_item = async (table, post_sql_func, context, req) => {
     let sql = `select * from ${table}`;
     const id = parseInt(req.query.id || (req.body && req.body.id));
+    console.log("get");
     switch (req.method) {
         case "POST":
             let post_sql = post_sql_func(req)

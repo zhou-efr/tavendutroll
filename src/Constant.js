@@ -1,4 +1,4 @@
-export const BASE_API_URL = 'http://localhost:8080/';
+export const BASE_API_URL = 'https://ambitious-dune-09528a410.1.azurestaticapps.net/api/';
 export const RECORD_API_URL = BASE_API_URL+'publication';
 export const QUEST_API_URL = BASE_API_URL+'quest';
 export const EVENT_API_URL = BASE_API_URL+'event';
