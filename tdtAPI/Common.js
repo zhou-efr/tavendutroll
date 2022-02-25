@@ -48,31 +48,32 @@ const output_res = (res, sql, connection) => {
 };
 const api_item = async (table, post_sql_func, context, req) => {
     let sql = `select * from ${table}`;
-    let id = req.query.id || (req.body && req.body.id);
-    console.log("get");
-    switch (req.method) {
-        case "POST":
-            let post_sql = post_sql_func(req)
-            let post_request = new Request(post_sql, (err) => error_res(context.res, err));
-            post_request.on('requestCompleted', () => output_res(context.res, sql, connection));
-            connection.execSql(post_request);
-            break;
-        case "DELETE":
-            if (id){
-                let del_sql = `delete from ${table} where id = ${id}`;
-                let del_request = new Request(del_sql, (err) => error_res(context.res, err));
-                del_request.on('requestCompleted', () => output_res(context.res, sql, connection));
-                connection.execSql(del_request);
-            } else {
-                error_res(context.res, "no id given")
-            }
-            break;
-        default: // GET
-            if (id) {
-                sql = `select * from ${table} where id = ${id}`;
-            }
-            output_res(context.res, sql, connection)
-    }
+    output_res(context.res, sql, connection);
+    // let id = req.query.id || (req.body && req.body.id);
+    // console.log("get");
+    // switch (req.method) {
+    //     case "POST":
+    //         let post_sql = post_sql_func(req)
+    //         let post_request = new Request(post_sql, (err) => error_res(context.res, err));
+    //         post_request.on('requestCompleted', () => output_res(context.res, sql, connection));
+    //         connection.execSql(post_request);
+    //         break;
+    //     case "DELETE":
+    //         if (id){
+    //             let del_sql = `delete from ${table} where id = ${id}`;
+    //             let del_request = new Request(del_sql, (err) => error_res(context.res, err));
+    //             del_request.on('requestCompleted', () => output_res(context.res, sql, connection));
+    //             connection.execSql(del_request);
+    //         } else {
+    //             error_res(context.res, "no id given")
+    //         }
+    //         break;
+    //     default: // GET
+    //         if (id) {
+    //             sql = `select * from ${table} where id = ${id}`;
+    //         }
+    //         output_res(context.res, sql, connection)
+    // }
 }
 
 module.exports = {
