@@ -36,8 +36,8 @@ const error_res = (res, err) => {
         });
     }
 }
-const output_res = (res, sql, connection) => {
-    res.json({
+const output_res = (context, sql, connection) => {
+    context.res.json({
         "panda": "panda"
     });
     // connection.execSql(new Request(sql, (err, rowCount, rows) => {
@@ -56,25 +56,25 @@ const api_item = async (table, post_sql_func, context, req) => {
     switch (req.method) {
         case "POST":
             let post_sql = post_sql_func(req)
-            let post_request = new Request(post_sql, (err) => error_res(context.res, err));
-            post_request.on('requestCompleted', () => output_res(context.res, sql, connection));
+            let post_request = new Request(post_sql, (err) => error_res(context, err));
+            post_request.on('requestCompleted', () => output_res(context, sql, connection));
             connection.execSql(post_request);
             break;
         case "DELETE":
             if (id){
                 let del_sql = `delete from ${table} where id = ${id}`;
-                let del_request = new Request(del_sql, (err) => error_res(context.res, err));
-                del_request.on('requestCompleted', () => output_res(context.res, sql, connection));
+                let del_request = new Request(del_sql, (err) => error_res(context, err));
+                del_request.on('requestCompleted', () => output_res(context, sql, connection));
                 connection.execSql(del_request);
             } else {
-                error_res(context.res, "no id given")
+                error_res(context, "no id given")
             }
             break;
         default: // GET
             if (id) {
                 sql = `select * from ${table} where id = ${id}`;
             }
-            output_res(context.res, sql, connection)
+            output_res(context, sql, connection)
     }
 }
 
