@@ -22,15 +22,7 @@ const post_sql_func = (req) => {
 }
 
 module.exports = async function (context, req) {
-    connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
-        if (err) {
-            console.log('Impossible de se connecter, erreur suivante :', err);
-            context.res.status(500).json({
-                error: err
-            });
-        } else {
-            let response = rows_to_json(rows);
-            context.res.status(200).json(response);
-        }
-    }));
+    context.res.status(200).json({
+        text: "Hello from the API"
+    });
 };
