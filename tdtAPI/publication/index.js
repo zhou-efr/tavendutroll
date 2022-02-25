@@ -1,5 +1,20 @@
 const { Connection, Request} = require("tedious");
-const {config, rows_to_json} = require("../Common");
+const config = {
+    authentication: {
+        options: {
+            userName: process.env.tdtDatabaseUser,
+            password: process.env.tdtPassword
+        },
+        type: "default"
+    },
+    server: process.env.tdtDatabaseServer,
+    options: {
+        database: process.env.tdtDatabaseName,
+        encrypt: true,
+        port: parseInt(process.env.tdtDatabasePort),
+        rowCollectionOnRequestCompletion: true,
+    }
+};
 const connection = new Connection(config);
 connection.connect();
 module.exports = async function (context, req) {
@@ -9,8 +24,7 @@ module.exports = async function (context, req) {
                 error: err
             });
         } else {
-            let response = rows_to_json(rows);
-            context.res.json(response);
+            context.res.json(rows);
         }
     }));
 };
