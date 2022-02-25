@@ -31,7 +31,7 @@ const rows_to_json = (rows) => {
 const error_res = (res, err) => {
     if (err) {
         console.log('Impossible de se connecter, erreur suivante :', err);
-        res.status(500).json({
+        res.json({
             error: err
         });
     }
@@ -42,7 +42,7 @@ const output_res = (res, sql, connection) => {
             error_res(res, err)
         } else {
             let response = rows_to_json(rows);
-            res.status(200).json(response);
+            res.json(response);
         }
     }));
 };
