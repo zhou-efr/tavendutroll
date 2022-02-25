@@ -16,7 +16,13 @@ const config = {
     }
 };
 const connection = new Connection(config);
-connection.connect();
+connection.connect((err) => {
+    if (err) {
+        context.res.json({
+            error: err
+        });
+    }
+});
 
 const post_sql_func = (req) => {
     return `
