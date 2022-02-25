@@ -1,4 +1,6 @@
 const {api_item} = require("./Common");
+const {Request} = require("tedious");
+const {error_res, output_res, connection, rows_to_json} = require("../Common");
 const post_sql_func = (req) => {
     return `
         insert into publication (
@@ -19,4 +21,16 @@ const post_sql_func = (req) => {
         )`;
 }
 
-module.exports = async (context, req) => api_item("publication", post_sql_func, context, req);
+module.exports = async (context, req) => {
+    connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
+        if (err) {
+            console.log('Impossible de se connecter, erreur suivante :', err);
+            context.res.status(500).json({
+                error: err
+            });
+        } else {
+            let response = rows_to_json(rows);
+            context.res.status(200).json(response);
+        }
+    }));
+};

@@ -20,4 +20,4 @@ const post_sql_func = (req) => {
         );
         `;
 }
-module.exports = async (context, req) => api_item("game", post_sql_func, context, req);
+module.exports = async (context, req) => await api_item("game", post_sql_func, context, req);

@@ -17,4 +17,4 @@ const post_sql_func = (req) => {
             '${req.body['thumbnail']}'
         )`;
 }
-module.exports = async (context, req) => api_item("event", post_sql_func, context, req);
+module.exports = async (context, req) => await api_item("event", post_sql_func, context, req);
