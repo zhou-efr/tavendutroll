@@ -18,13 +18,17 @@ const config = {
 const connection = new Connection(config);
 connection.connect();
 module.exports = async function (context, req) {
-    connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
-        if (err) {
-            context.res.json({
-                error: err
-            });
-        } else {
-            context.res.json(rows);
-        }
-    }));
+    context.res.json({
+        text: "panda",
+        response: "pandi panda"
+    });
+    // connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
+    //     if (err) {
+    //         context.res.json({
+    //             error: err
+    //         });
+    //     } else {
+    //         context.res.json(rows);
+    //     }
+    // }));
 };
