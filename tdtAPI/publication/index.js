@@ -2,16 +2,16 @@ const { Connection, Request} = require("tedious");
 const config = {
     authentication: {
         options: {
-            userName: process.env.tdtDatabaseUser,
-            password: process.env.tdtPassword
+            userName: "kllnzhou",
+            password: "hEb4zyu665vaWR5"
         },
         type: "default"
     },
-    server: process.env.tdtDatabaseServer,
+    server: "taverndutrollserver.database.windows.net",
     options: {
-        database: process.env.tdtDatabaseName,
+        database: "taverndutrollapi",
         encrypt: true,
-        port: parseInt(process.env.tdtDatabasePort),
+        port: 1433,
         rowCollectionOnRequestCompletion: true,
     }
 };
