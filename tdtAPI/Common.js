@@ -37,6 +37,7 @@ const error_res = (res, err) => {
     }
 }
 const output_res = (res, sql, connection) => {
+    res.json({panda: "ours polaire"});
     connection.execSql(new Request(sql, (err, rowCount, rows) => {
         if (err) {
             error_res(res, err)
