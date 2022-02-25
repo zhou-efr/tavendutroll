@@ -1,34 +1,22 @@
-const { Connection, Request} = require("tedious");
-const config = {
-    authentication: {
-        options: {
-            userName: process.env.tdtDatabaseUser,
-            password: process.env.tdtPassword
-        },
-        type: "default"
-    },
-    server: process.env.tdtDatabaseServer,
-    options: {
-        database: process.env.tdtDatabaseName,
-        encrypt: true,
-        port: parseInt(process.env.tdtDatabasePort),
-        rowCollectionOnRequestCompletion: true,
-    }
-};
-const connection = new Connection(config);
-connection.connect();
-module.exports = async function (context, req) {
-    context.res.json({
-        text: "panda",
-        response: "pandi panda"
-    });
-    // connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
-    //     if (err) {
-    //         context.res.json({
-    //             error: err
-    //         });
-    //     } else {
-    //         context.res.json(rows);
-    //     }
-    // }));
-};
+const {api_item} = require("./Common");
+const post_sql_func = (req) => {
+    return `
+        insert into publication (
+            name,
+            author,
+            pole,
+            description,
+            content,
+            imageUrl
+        )
+        VALUES (
+            '${req.body['name']}',
+            '${req.body['author']}',
+            '${req.body['pole']}',
+            '${req.body['description']}',
+            '${req.body['content']}',
+            '${req.body['thumbnail']}'
+        )`;
+}
+
+module.exports = async (context, req) => await api_item("publication", post_sql_func, context, req);
