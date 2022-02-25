@@ -19,4 +19,6 @@ const post_sql_func = (req) => {
         )`;
 }
 
-module.exports = async (context, req) => await api_item("publication", post_sql_func, context, req);
+module.exports = async function (context, req) {
+    api_item("publication", post_sql_func, context, req);
+};
