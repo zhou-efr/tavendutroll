@@ -1,17 +1,17 @@
 const { Connection, Request} = require("tedious");
 const config = {
     authentication: {
+        type: "azure-active-directory-password",
         options: {
-            userName: "kllnzhou",
-            password: "hEb4zyu665vaWR5"
+            userName: process.env.tdtDatabaseUser,
+            password: process.env.tdtPassword
         },
-        type: "default"
     },
-    server: "taverndutrollserver.database.windows.net",
+    server: process.env.tdtDatabaseServer,
     options: {
-        database: "taverndutrollapi",
+        database: process.env.tdtDatabaseName,
         encrypt: true,
-        port: 1433,
+        port: parseInt(process.env.tdtDatabasePort),
         rowCollectionOnRequestCompletion: true,
     }
 };
@@ -19,6 +19,7 @@ const connection = new Connection(config);
 connection.connect((err) => {
     if (err) {
         context.res.json({
+            "context" : "connection",
             error: err
         });
     }
@@ -59,6 +60,7 @@ module.exports = async function (context, req) {
     connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
         if (err) {
             context.res.json({
+                "context" : "call",
                 error: err
             });
         } else {
