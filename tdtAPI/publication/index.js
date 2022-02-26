@@ -51,6 +51,10 @@ module.exports = async function (context, req) {
     connection.on("connect",  err => {
         if (err) {
             console.error("connect : ", err.message);
+            context.res.json({
+                "context" : "connect",
+                error: err
+            });
         } else {
             connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
                 if (err) {
