@@ -1,7 +1,7 @@
 const { Connection, Request} = require("tedious");
 const config = {
     authentication: {
-        type: "azure-active-directory-password",
+        type: "default",
         options: {
             userName: process.env.tdtDatabaseUser,
             password: process.env.tdtPassword
