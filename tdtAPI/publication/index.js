@@ -22,20 +22,6 @@ connection.connect((err) => {
             "context" : "connection",
             error: err
         });
-    }else{
-        module.exports = async function (context, req) {
-            connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
-                if (err) {
-                    context.res.json({
-                        "context" : "call",
-                        error: err
-                    });
-                } else {
-                    let response = rows_to_json(rows);
-                    context.res.json(response);
-                }
-            }));
-        };
     }
 });
 
@@ -69,4 +55,16 @@ const rows_to_json = (rows) => {
     }
     return output;
 };
-
+module.exports = async function (context, req) {
+    connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
+        if (err) {
+            context.res.json({
+                "context" : "call",
+                error: err
+            });
+        } else {
+            let response = rows_to_json(rows);
+            context.res.json(response);
+        }
+    }));
+};
