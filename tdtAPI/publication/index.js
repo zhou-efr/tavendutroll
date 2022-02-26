@@ -15,15 +15,6 @@ const config = {
         rowCollectionOnRequestCompletion: true,
     }
 };
-const connection = new Connection(config);
-connection.connect((err) => {
-    if (err) {
-        context.res.json({
-            "context" : "connection",
-            error: err
-        });
-    }
-});
 
 const post_sql_func = (req) => {
     return `
@@ -56,15 +47,26 @@ const rows_to_json = (rows) => {
     return output;
 };
 module.exports = async function (context, req) {
-    connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
+    const connection = new Connection(config);
+    connection.connect((err) => {
         if (err) {
             context.res.json({
-                "context" : "call",
+                "context" : "connection",
                 error: err
             });
-        } else {
-            let response = rows_to_json(rows);
-            context.res.json(response);
+        }else {
+
+            connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
+                if (err) {
+                    context.res.json({
+                        "context" : "call",
+                        error: err
+                    });
+                } else {
+                    let response = rows_to_json(rows);
+                    context.res.json(response);
+                }
+            }));
         }
-    }));
+    });
 };
