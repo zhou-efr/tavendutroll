@@ -48,14 +48,10 @@ const rows_to_json = (rows) => {
 };
 module.exports = async function (context, req) {
     const connection = new Connection(config);
-    connection.connect((err) => {
+    connection.on("connect",  err => {
         if (err) {
-            context.res.json({
-                "context" : "connection",
-                error: err
-            });
-        }else {
-
+            console.error("connect : ", err.message);
+        } else {
             connection.execSql(new Request("select * from publication", (err, rowCount, rows) => {
                 if (err) {
                     context.res.json({
@@ -69,4 +65,5 @@ module.exports = async function (context, req) {
             }));
         }
     });
+    connection.connect();
 };
