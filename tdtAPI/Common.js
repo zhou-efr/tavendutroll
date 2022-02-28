@@ -15,8 +15,6 @@ const config = {
         rowCollectionOnRequestCompletion: true,
     }
 };
-const connection = new Connection(config);
-connection.connect();
 const rows_to_json = (rows) => {
     let output = [];
     for (const rowsKey in rows) {
@@ -28,12 +26,13 @@ const rows_to_json = (rows) => {
     }
     return output;
 };
-const error_res = (context, err) => {
+const error_res = (context, err, connection) => {
     if (err) {
         console.log('Impossible de se connecter, erreur suivante :', err);
         context.res.json({
             error: err
         });
+        connection.close();
     }
 }
 const output_res = (context, sql, connection) => {
@@ -43,40 +42,42 @@ const output_res = (context, sql, connection) => {
         } else {
             let response = rows_to_json(rows);
             context.res.json(response);
+            connection.close();
         }
     }));
 };
 const api_item = async (table, post_sql_func, context, req) => {
+    const connection = new Connection(config);
     let sql = `select * from ${table}`;
     let id = req.query.id || (req.body && req.body.id);
-    console.log("get");
-    switch (req.method) {
-        case "POST":
-            let post_sql = post_sql_func(req)
-            let post_request = new Request(post_sql, (err) => error_res(context, err));
-            post_request.on('requestCompleted', () => output_res(context, sql, connection));
-            connection.execSql(post_request);
-            break;
-        case "DELETE":
-            if (id){
-                let del_sql = `delete from ${table} where id = ${id}`;
-                let del_request = new Request(del_sql, (err) => error_res(context, err));
-                del_request.on('requestCompleted', () => output_res(context, sql, connection));
-                connection.execSql(del_request);
-            } else {
-                error_res(context, "no id given")
-            }
-            break;
-        default: // GET
-            if (id) {
-                sql = `select * from ${table} where id = ${id}`;
-            }
-            output_res(context, sql, connection)
-    }
+    await connection.connect(() => {
+        switch (req.method) {
+            case "POST":
+                let post_sql = post_sql_func(req)
+                let post_request = new Request(post_sql, (err) => error_res(context, err, connection));
+                post_request.on('requestCompleted', () => output_res(context, sql, connection));
+                connection.execSql(post_request);
+                break;
+            case "DELETE":
+                if (id){
+                    let del_sql = `delete from ${table} where id = ${id}`;
+                    let del_request = new Request(del_sql, (err) => error_res(context, err, connection));
+                    del_request.on('requestCompleted', () => output_res(context, sql, connection));
+                    connection.execSql(del_request);
+                } else {
+                    error_res(context, "no id given")
+                }
+                break;
+            default: // GET
+                if (id) {
+                    sql = `select * from ${table} where id = ${id}`;
+                }
+                output_res(context, sql, connection)
+        }
+    });
 }
 
 module.exports = {
-    "connection": connection,
     "rows_to_json": rows_to_json,
     "error_res": error_res,
     "output_res": output_res,
