@@ -1,5 +1,4 @@
 import {
-    BASE_API_URL,
     EVENT_API_URL,
     EVENTS_URL, GAME_API_URL, GAME_URL,
     QUEST_API_URL,
@@ -31,7 +30,6 @@ export const Home = () => {
 
     useEffect(async () => {
         document.title = "taverne du troll";
-        await fetch(EVENT_API_URL+"/1", {method: 'DELETE'}).catch(e => null);
     }, [])
     useEffect(() => {
         fetch(GAME_API_URL, {method: 'GET', "Access-Control-Allow-Origin": "*"})
