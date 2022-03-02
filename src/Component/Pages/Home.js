@@ -1,4 +1,5 @@
 import {
+    BASE_API_URL,
     EVENT_API_URL,
     EVENTS_URL, GAME_API_URL, GAME_URL,
     QUEST_API_URL,
@@ -28,31 +29,32 @@ export const Home = () => {
 
     // TODO: responsive
 
-    useEffect(() => {
+    useEffect(async () => {
         document.title = "taverne du troll";
+        await fetch(EVENT_API_URL+"/1", {method: 'DELETE'}).catch(e => null);
     }, [])
     useEffect(() => {
-        fetch(GAME_API_URL, {method: 'GET',})
+        fetch(GAME_API_URL, {method: 'GET', "Access-Control-Allow-Origin": "*"})
             .then(res => res.json())
-            .then((res) => {setGames(res);setGamesLoad(res.length);})
+            .then((res) => {setGames(res);setGamesLoad(res.length > 0);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(QUEST_API_URL, {method: 'GET',})
+        fetch(QUEST_API_URL, {method: 'GET', "Access-Control-Allow-Origin": "*"})
             .then(res => res.json())
-            .then((res) => {setQuests(res);setQuestsLoad(res.length);})
+            .then((res) => {setQuests(res);setQuestsLoad(res.length > 0);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(RECORD_API_URL, {method: 'GET',})
+        fetch(RECORD_API_URL, {method: 'GET', "Access-Control-Allow-Origin": "*"})
             .then(res => res.json())
-            .then((res) => {setPosts(res);setPostsLoad(res.length);})
+            .then((res) => {setPosts(res);setPostsLoad(res.length > 0);})
             .catch((res) => {console.log(res)})
     }, [])
     useEffect(() => {
-        fetch(EVENT_API_URL, {method: 'GET',})
+        fetch(EVENT_API_URL, {method: 'GET', "Access-Control-Allow-Origin": "*"})
             .then(res => res.json())
-            .then((res) => {setEvents(res);setEventsLoad(res.length);})
+            .then((res) => {setEvents(res);setEventsLoad(res.length > 0);})
             .catch((res) => {console.log(res)})
     }, [])
 

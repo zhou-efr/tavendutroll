@@ -3,7 +3,7 @@ export const RECORD_API_URL = BASE_API_URL+'publication';
 export const QUEST_API_URL = BASE_API_URL+'quest';
 export const EVENT_API_URL = BASE_API_URL+'event';
 export const GAME_API_URL = BASE_API_URL+'game';
-export const IMAGE_UPLOAD_API_URL = BASE_API_URL+'img/upload';
+export const IMAGE_UPLOAD_API_URL = BASE_API_URL+'File/upload';
 export const BASE_IMAGE_API_URL = 'https://kllnstorage.blob.core.windows.net/tdtfilestorage/';
 
 

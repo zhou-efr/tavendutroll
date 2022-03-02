@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {BASE_API_URL, BASE_IMAGE_API_URL} from "../../../../Constant";
+import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../../Constant";
 
 export const Game = (props) => {
     const [game, setGame] = useState({name: '', support: '', pole: 'common', thumbnail: null, description: '', content: '', available: false})
@@ -8,7 +8,7 @@ export const Game = (props) => {
         let data = new FormData();
         data.append('file', game.thumbnail[0])
 
-        let thumbnail = await fetch(BASE_API_URL + 'upload', {method: 'POST', body: data}).catch(e => null)
+        let thumbnail = await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => null)
         thumbnail = await thumbnail.json();
 
         if (!thumbnail){
@@ -16,7 +16,7 @@ export const Game = (props) => {
         }
 
         data = game;
-        data.thumbnail = BASE_IMAGE_API_URL + game.thumbnail[0].name;
+        data.imageUrl = BASE_IMAGE_API_URL + game.thumbnail[0].name;
         let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => null)
         res = await res.json();
         console.log(res);
