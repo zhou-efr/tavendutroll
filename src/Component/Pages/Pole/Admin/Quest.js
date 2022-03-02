@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {BASE_API_URL} from "../../../../Constant";
+import {BASE_API_URL, BASE_IMAGE_API_URL} from "../../../../Constant";
 
 export const Quest = (props) => {
     const [quest, setQuest] = useState({
@@ -25,7 +25,7 @@ export const Quest = (props) => {
         }
 
         data = quest;
-        data.thumbnail = thumbnail.fileUrl;
+        data.thumbnail = BASE_IMAGE_API_URL + quest.thumbnail[0].name;
         let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => null)
         res = await res.json();
 

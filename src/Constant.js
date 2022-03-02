@@ -1,8 +1,11 @@
-export const BASE_API_URL = 'https://ambitious-dune-09528a410.1.azurestaticapps.net/api/';
+export const BASE_API_URL = 'https://tdtaspnetapi.azurewebsites.net/api/';
 export const RECORD_API_URL = BASE_API_URL+'publication';
 export const QUEST_API_URL = BASE_API_URL+'quest';
 export const EVENT_API_URL = BASE_API_URL+'event';
 export const GAME_API_URL = BASE_API_URL+'game';
+export const IMAGE_UPLOAD_API_URL = BASE_API_URL+'img/upload';
+export const BASE_IMAGE_API_URL = 'https://kllnstorage.blob.core.windows.net/tdtfilestorage/';
+
 
 export const RPG_URL = '/rpg';
 export const QUESTS_URL = "/rpg/quests";
