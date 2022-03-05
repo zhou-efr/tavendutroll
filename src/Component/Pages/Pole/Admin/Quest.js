@@ -17,12 +17,8 @@ export const Quest = (props) => {
         let data = new FormData();
         data.append('file', quest.thumbnail[0])
 
-        let thumbnail = await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => null)
-        thumbnail = await thumbnail.json();
-
-        if (!thumbnail){
-            return
-        }
+        await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => null)
+        // thumbnail = await thumbnail.json();
 
         data = quest;
         data.imageUrl = BASE_IMAGE_API_URL + quest.thumbnail[0].name;
