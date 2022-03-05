@@ -1,8 +1,8 @@
 export const BASE_API_URL = 'https://tdtaspnetapi.azurewebsites.net/api/';
-export const RECORD_API_URL = BASE_API_URL+'publication';
-export const QUEST_API_URL = BASE_API_URL+'quest';
-export const EVENT_API_URL = BASE_API_URL+'event';
-export const GAME_API_URL = BASE_API_URL+'game';
+export const RECORD_API_URL = BASE_API_URL+'Publication';
+export const QUEST_API_URL = BASE_API_URL+'Quest';
+export const EVENT_API_URL = BASE_API_URL+'Event';
+export const GAME_API_URL = BASE_API_URL+'Game';
 export const IMAGE_UPLOAD_API_URL = BASE_API_URL+'File/upload';
 export const BASE_IMAGE_API_URL = 'https://kllnstorage.blob.core.windows.net/tdtfilestorage/';
 
@@ -19,4 +19,5 @@ export const OFFICE_URL = "/office";
 export const ABOUT_URL = "/about";
 export const PARTNER_URL = "/partner";
 export const ADMIN_URL = "/administration";
+export const STATUTS_URL = "/statuts";
 export const HOME_URL = "/";

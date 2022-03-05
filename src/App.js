@@ -18,7 +18,7 @@ import {
     PARTNER_URL,
     QUESTS_URL,
     RECORDS_URL,
-    RPG_URL,
+    RPG_URL, STATUTS_URL,
     WARGAME_URL
 } from "./Constant";
 import {Quest} from "./Component/Pages/Pole/Quest";
@@ -26,6 +26,7 @@ import {Record} from "./Component/Pages/Record";
 import {Event} from "./Component/Pages/Event";
 import {GameList} from "./Component/Pages/Pole/list/GameList";
 import {Game} from "./Component/Pages/Pole/list/Game";
+import {Statuts} from "./Component/Pages/Statuts";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                   <Route path={ABOUT_URL} element={<About />}/>
                   <Route path={PARTNER_URL} element={<Partner />}/>
                   <Route path={ADMIN_URL} element={<Admin />}/>
+                  <Route path={STATUTS_URL} element={<Statuts />}/>
                   <Route path={RPG_URL} element={<RolePlayingGame />}/>
                   <Route path={WARGAME_URL} element={<Wargame />}/>
                   <Route path={QUESTS_URL} element={<QuestBoard />}/>
