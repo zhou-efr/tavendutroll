@@ -123,7 +123,7 @@ export const Home = () => {
                         </Link>
                     }
                     <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/4 rounded-l"} >
-                        <iframe src="https://discord.com/widget?id=357854383985393665&theme=dark"
+                        <iframe src="https://discord.com/widget?id=357854383985393665&theme=light"
                                 allowTransparency="true"
                                 title={"discord"}
                                 frameBorder="0"
