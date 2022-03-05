@@ -18,5 +18,5 @@ export const GAME_URL = "/games/game";
 export const OFFICE_URL = "/office";
 export const ABOUT_URL = "/about";
 export const PARTNER_URL = "/partner";
-export const ADMIN_URL = "/admin";
+export const ADMIN_URL = "/administration";
 export const HOME_URL = "/";
