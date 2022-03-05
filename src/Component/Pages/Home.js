@@ -28,7 +28,7 @@ export const Home = () => {
 
     // TODO: responsive
 
-    useEffect(async () => {
+    useEffect(() => {
         document.title = "taverne du troll";
     }, [])
     useEffect(() => {
