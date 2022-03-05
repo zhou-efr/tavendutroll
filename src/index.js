@@ -17,6 +17,7 @@ ReactDOM.render(
 
     <meta property="og:image" content={logo}/>
     <meta name="twitter:image" content={logo}/>
+    <meta name="description" content="Association de jeux d'EFREI Paris."/>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
