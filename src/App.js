@@ -27,34 +27,42 @@ import {Event} from "./Component/Pages/Event";
 import {GameList} from "./Component/Pages/Pole/list/GameList";
 import {Game} from "./Component/Pages/Pole/list/Game";
 import {Statuts} from "./Component/Pages/Statuts";
+import {useAuth0} from "@auth0/auth0-react";
 
 function App() {
-  return (
-      <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans'}>
-          <BrowserRouter>
-              <Header />
-              <Routes>
-                  <Route path={OFFICE_URL} element={<Office />}/>
-                  <Route path={ABOUT_URL} element={<About />}/>
-                  <Route path={PARTNER_URL} element={<Partner />}/>
-                  <Route path={ADMIN_URL} element={<Admin />}/>
-                  <Route path={STATUTS_URL} element={<Statuts />}/>
-                  <Route path={RPG_URL} element={<RolePlayingGame />}/>
-                  <Route path={WARGAME_URL} element={<Wargame />}/>
-                  <Route path={QUESTS_URL} element={<QuestBoard />}/>
-                  <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
-                  <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
-                  <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
-                  <Route path={GAME_LIST_URL} element={<GameList />}/>
-                  <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
-                  <Route path={GAME_URL+'/:id'} element={<Game />}/>
-                  <Route path={HOME_URL} element={<Home />}/>
-              </Routes>
-              <Footer />
-              <Navbar />
-          </BrowserRouter>
-      </div>
-  );
+    const { isLoading } = useAuth0();
+      return (
+          <>
+              {
+                  !isLoading && (
+                      <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans'}>
+                          <BrowserRouter>
+                              <Header />
+                              <Routes>
+                                  <Route path={OFFICE_URL} element={<Office />}/>
+                                  <Route path={ABOUT_URL} element={<About />}/>
+                                  <Route path={PARTNER_URL} element={<Partner />}/>
+                                  <Route path={ADMIN_URL} element={<Admin />}/>
+                                  <Route path={STATUTS_URL} element={<Statuts />}/>
+                                  <Route path={RPG_URL} element={<RolePlayingGame />}/>
+                                  <Route path={WARGAME_URL} element={<Wargame />}/>
+                                  <Route path={QUESTS_URL} element={<QuestBoard />}/>
+                                  <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
+                                  <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
+                                  <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
+                                  <Route path={GAME_LIST_URL} element={<GameList />}/>
+                                  <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
+                                  <Route path={GAME_URL+'/:id'} element={<Game />}/>
+                                  <Route path={HOME_URL} element={<Home />}/>
+                              </Routes>
+                              <Footer />
+                              <Navbar />
+                          </BrowserRouter>
+                      </div>
+                  )
+              }
+          </>
+      );
 }
 
 export default App;

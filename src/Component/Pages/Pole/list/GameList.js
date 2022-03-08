@@ -26,7 +26,7 @@ export const GameList = (props) => {
         <div className={"w-screen p-10 flex justify-center items-center"}>
             {
                 gameListLoad && (
-                    <div className={"w-full flex flex-wrap gap-12"}>
+                    <div className={"w-full flex flex-wrap justify-center items-center gap-12"}>
                         {
                             gameList.map((item, index) => {
                                 return (

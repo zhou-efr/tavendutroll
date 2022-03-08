@@ -10,7 +10,6 @@ export const Item = (props) => {
     const [itemLoad, setItemLoad] = useState(false);
     const [content, setContent] = useState(true);
     const [link, setLink] = useState("#");
-    setButton(false);
 
     useEffect(() => {
         if(Object.keys(props).includes("content")){
@@ -32,6 +31,7 @@ export const Item = (props) => {
             setItem(props.item);
             setItemLoad(true);
         }
+        setButton(false);
     }, [id, props.call, props.item, props.url, props])
     return (
         <div className={containerCss}>
@@ -43,10 +43,9 @@ export const Item = (props) => {
                             <div className={"flex flex-col justify-center"}>
                                 <div className={"flex flex-wrap md:flex-row gap-5 items-center m-6 md:m-0 justify-center"}>
                                     <Link to={link}><p className={"text-4xl font-zelda"}>{item.name}</p></Link>
-
                                     {button && <button className={"shadow-md rounded p-2 bg-tdt-brown text-white"}
-                                             onClick={() => console.log()}>
-                                        {button}
+                                         onClick={() => console.log()}>
+                                    {button}
                                     </button>}
                                 </div>
                                 {item['discordId'] ? <p className={'font-bold'}>{item['discordId']} - {item['player']} joueurs</p> : <></>}
@@ -60,6 +59,13 @@ export const Item = (props) => {
                                             objectKey === "player" ||
                                             objectKey === "name"){
                                             return <></>
+                                        }
+                                        if(objectKey === "available"){
+                                            return (
+                                                <p className={""} key={k}>
+                                                    <span className={"font-bold"}>{objectKey} : </span> {item[objectKey]?"":"not "} available
+                                                </p>
+                                            );
                                         }
                                         return (
                                             <p className={""} key={k}>

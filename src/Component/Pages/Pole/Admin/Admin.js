@@ -3,19 +3,21 @@ import {Post} from "./Post";
 import {Event} from "./Event";
 import {Quest} from "./Quest";
 import {Game} from "./Game";
+import {useAuth0} from "@auth0/auth0-react";
 
 export const Admin = () => {
-    const [panda, setLogin] = useState(false);
+    // const [panda, setLogin] = useState(false);
     const [post, setPost] = useState(true);
     const [event, setEvent] = useState(false);
     const [game, setGame] = useState(false);
     const [quest, setQuest] = useState(false);
-
-    const onLogin = (value) => {
-        if ('74ehjtcxjTTRjqF' === value){
-            setLogin(true);
-        }
-    }
+    const { user, isAuthenticated, isLoading } = useAuth0();
+    console.log(user);
+    // const onLogin = (value) => {
+    //     if ('74ehjtcxjTTRjqF' === value){
+    //         setLogin(true);
+    //     }
+    // }
 
     const onTabChange = (target) => {
         switch (target) {
@@ -45,10 +47,14 @@ export const Admin = () => {
         }
     }
 
+    if (isLoading) {
+        return <div>Loading ...</div>;
+    }
+
     return (
         <div className={"min-h-screen flex flex-col justify-center items-center mt-10 mb-10"}>
         {
-            panda ? (
+            isAuthenticated && (
                 <div className={"w-4/6 flex flex-col items-start p-5 border rounded-xl drop-shadow-md"}>
                     <div className={"flex flex-row gap-2 justify-start mb-3"}>
                         <div className={"border-b-tdt-brown w-16".concat(post?" border-b-2":" border-b")}>
@@ -80,8 +86,6 @@ export const Admin = () => {
                     { game && <Game /> }
                     { quest && <Quest /> }
                 </div>
-            ):(
-                <input type={"password"} onChange={e => onLogin(e.target.value)}/>
             )
         }
         </div>
