@@ -25,7 +25,8 @@ export const Navbar = () => {
                 <Link to={HOME_URL}><p className={"mr-3"}>Home</p></Link>
                 <Link to={OFFICE_URL}><p className={"mr-3"}>Bureau</p></Link>
                 <Link to={STATUTS_URL}><p className={"mr-3"}>Satuts</p></Link>
-                { isAuthenticated && <Link to={ADMIN_URL}><p className={"mr-3"}>Admin</p></Link>}
+                { isAuthenticated && <Link to={ADMIN_URL}><p className={"mr-3"}>Admin</p></Link> }
+                { isAuthenticated && <Link to={PROFILE_URL}><p className={"mr-3"}>Profile</p></Link> }
                 <Link to={GAME_LIST_URL}><p className={"mr-3"}>Liste des jeux</p></Link>
                 <Link to={PARTNER_URL}><p className={"mr-3"}>Partenaires</p></Link>
                 <Link to={ABOUT_URL}><p className={"mr-3"}>About us</p></Link>
@@ -38,7 +39,7 @@ export const Navbar = () => {
                 }
                 <a href={'https://faireundon.wwf.fr/don'}>Donnez à la wwf</a>
             </div>
-            <div className={"hidden md:flex flex-row mx-3 w-1/2 items-center text-white"}>
+            <div className={"hidden md:flex flex-row mx-3 lg:w-1/2 items-center text-white"}>
                 <Link to={HOME_URL}><p className={"mr-3"}>Home</p></Link>
                 <Link to={OFFICE_URL}><p className={"mr-3"}>Bureau</p></Link>
                 <Link to={STATUTS_URL}><p className={"mr-3"}>Satuts</p></Link>

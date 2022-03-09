@@ -47,7 +47,7 @@ export const Footer = () => {
                   </div>
               </div>
           </div>
-          <div className={"flex flex-wrap w-full justify-between pb-1 h-1/3"}>
+          <div className={"flex flex-col md:flex-row w-full justify-center items-center md:justify-between pb-1 h-1/3"}>
               <p className={"text-sm pl-6"}>association loi 1901</p>
               <div className={"flex flex-col items-end "}>
                   <div className={"flex flex-wrap pb-3 justify-center items-center"}>
