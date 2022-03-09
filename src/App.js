@@ -33,7 +33,7 @@ import {Profile} from "./Component/Pages/Profile";
 function App() {
     // const { isLoading } = useAuth0();
       return (
-          <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans'}>
+          <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans [scroll-behavior:smooth]'}>
               <BrowserRouter>
                   <Header />
                   <Routes>

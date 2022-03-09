@@ -1,6 +1,6 @@
 import {
     EVENT_API_URL,
-    EVENTS_URL, GAME_API_URL, GAME_URL,
+    EVENTS_URL, GAME_API_URL, GAME_URL, HOME_URL,
     QUEST_API_URL,
     QUESTS_URL,
     RECORD_API_URL,
@@ -65,23 +65,38 @@ export const Home = () => {
     return (
         <div className={'min-h-screen w-5/6'}>
             <div className="flex flex-col justify-center">
-                <div className="flex flex-row justify-between h-1/4 w-full m-10">
-                    { postsLoad &&
-                        <Link to={RECORDS_URL+'/'+posts[a].id}>
-                            <div className="flex flex-row justify-center p-24">
-                                <img className={"w-96 h-48 object-cover"} alt={"post"} src={posts[a].imageUrl}/>
-                                <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
-                                    <h2 className={"text-xl font-bold"}>
-                                        {posts[a].name}
-                                    </h2>
-                                    <p className={"text-base"}>
-                                        {posts[a].description}
-                                    </p>
+                <div className="flex flex-row flex-wrap justify-between h-1/4 w-full m-10">
+                    { postsLoad ? (
+                            <Link to={RECORDS_URL+'/'+posts[a].id}>
+                                <div className="flex flex-row justify-center p-24">
+                                    <img className={"w-96 h-48 object-cover"} alt={"post"} src={posts[a].imageUrl}/>
+                                    <div className={"flex flex-col ml-9 lg:w-1/5 justify-center items-start"}>
+                                        <h2 className={"text-xl font-bold"}>
+                                            {posts[a].name}
+                                        </h2>
+                                        <p className={"text-base"}>
+                                            {posts[a].description}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
+                        ):(
+                            <Link to={HOME_URL}>
+                                <div className="flex flex-row justify-center p-24">
+                                    <img className={"w-96 h-48 object-cover"} alt={"post"} src={"https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG"}/>
+                                    <div className={"flex flex-col ml-9 lg:w-1/5 justify-center items-start"}>
+                                        <h2 className={"text-xl font-bold"}>
+                                            Bienvenue
+                                        </h2>
+                                        <p className={"text-base"}>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        </p>
+                                    </div>
+                                </div>
+                            </Link>
+                        )
                     }
-                    <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/5"} >
+                    <div className={"flex flex-col border border-tdt-brown h-1/2 lg:w-1/5"} >
                         <Link to={WARGAME_URL}>
                                 <img className={"w-full h-1/2 object-contain"} src={wargame} alt={"wargame"} />
                                 <div className={"w-full h-1/2 p-8 overflow-hidden"}>
@@ -95,8 +110,8 @@ export const Home = () => {
                 </div>
             </div>
             <div className="flex flex-col justify-center">
-                <div className="flex flex-row justify-between items-center ml-24 h-1/4 w-full m-10">
-                    <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/5"} >
+                <div className="flex flex-row flex-wrap justify-center lg:justify-between items-center lg:ml-24 h-1/4 w-full m-10">
+                    <div className={"flex flex-col border border-tdt-brown h-1/2 lg:w-1/5"} >
                         <Link to={RPG_URL}>
                             <img className={"w-full h-1/2 object-cover"} src={jdr} alt={"wargame"} />
                             <div className={"w-full h-1/2 p-8 overflow-hidden"}>
@@ -107,22 +122,37 @@ export const Home = () => {
                             </div>
                         </Link>
                     </div>
-                    { questsLoad &&
+                    { questsLoad ? (
                         <Link to={QUESTS_URL+'/'+quests[d].id}>
-                            <div className="flex flex-row justify-center p-24 pl-8 pr-60">
-                                    <img className={"w-48 h-full overflow-hidden object-cover"} alt={"post"} src={quests[d].imageUrl}/>
-                                    <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
-                                        <h2 className={"text-xl font-bold"}>
-                                            {quests[d].name}
-                                        </h2>
-                                        <p className={"text-base"}>
-                                            {quests[d].description}
-                                        </p>
-                                    </div>
+                            <div className="flex flex-row flex-wrap items-center justify-center p-24 pl-8 pr-60">
+                                <img className={"w-48 h-full overflow-hidden object-cover"} alt={"post"} src={quests[d].imageUrl}/>
+                                <div className={"flex flex-col ml-9 lg:w-1/5 justify-center items-start"}>
+                                    <h2 className={"text-xl font-bold"}>
+                                        {quests[d].name}
+                                    </h2>
+                                    <p className={"text-base"}>
+                                        {quests[d].description}
+                                    </p>
+                                </div>
                             </div>
                         </Link>
+                    ):(
+                        <Link to={HOME_URL}>
+                            <div className="flex flex-row justify-center p-24 pl-8 pr-60">
+                                <img className={"w-48 h-full overflow-hidden object-cover"} alt={"post"} src={"https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG"}/>
+                                <div className={"flex flex-col ml-9 lg:w-1/5 justify-center items-start"}>
+                                    <h2 className={"text-xl font-bold"}>
+                                        Exemple de Campagne
+                                    </h2>
+                                    <p className={"text-base"}>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    )
                     }
-                    <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/4 rounded-l"} >
+                    <div className={"flex flex-col border border-tdt-brown h-1/2 lg:w-1/4 rounded-l"} >
                         <iframe src="https://discord.com/widget?id=357854383985393665&theme=light"
                                 allowTransparency="true"
                                 title={"discord"}
@@ -130,36 +160,27 @@ export const Home = () => {
                                 height={350}
                                 sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" />
                     </div>
-                    {/*<div className={"flex flex-col border border-tdt-brown h-1/2 w-1/4"} >*/}
-                    {/*    <img className={"w-full h-1/2 object-contain"} src={posts[c].imageUrl} alt={"wargame"} />*/}
-                    {/*    <div className={"w-full h-1/2 p-8 overflow-hidden"}>*/}
-                    {/*        <h2 className={"text-2xl"}>{posts[c].name}</h2>*/}
-                    {/*        <p className={"p-2 h-1/2 overflow-hidden"}>*/}
-                    {/*            {posts[c].description}*/}
-                    {/*        </p>*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
                 </div>
             </div>
             {
                 eventsLoad &&
                 <Link to={EVENTS_URL+'/'+events[b].id}>
                     <div className="flex flex-col justify-center relative items-start h-96 w-screen">
-                        <img className={"absolute h-full w-screen object-cover top-0 left-0 z-0"} src={events[b].imageUrl} alt={events[b].name}/>
+                        <img className={"absolute filter blur-sm lg:blur-none h-full w-screen object-cover top-0 left-0 z-0"} src={events[b].imageUrl} alt={events[b].name}/>
                         <div className="flex flex-col m-8 justify-center relative items-start">
-                            <img className={"absolute h-1/2 w-screen object-contain z-0"} src={frame} alt={'frame'}/>
-                            <h3 className={"text-5xl p-40 text-white m-16 z-10 max-w-xl break-words overflow-hidden"}>{events[b].name}</h3>
+                            <img className={"hidden lg:block absolute h-1/2 w-screen object-contain z-0"} src={frame} alt={'frame'}/>
+                            <h3 className={"text-5xl lg:p-40 text-white lg:m-16 z-10 max-w-xl break-words overflow-hidden"}>{events[b].name}</h3>
                         </div>
                     </div>
                 </Link>
             }
             <div className="flex flex-col justify-center pt-10">
-                <div className="flex flex-row justify-between h-1/4 w-full m-10">
-                    { gamesLoad &&
+                <div className="flex flex-row flex-wrap justify-between h-1/4 w-full m-10">
+                    { gamesLoad ? (
                         <Link to={GAME_URL+'/'+games[e].id}>
-                            <div className="flex flex-row justify-center p-24">
+                            <div className="flex flex-row flex-wrap justify-center lg:p-24 pb-12">
                                 <img className={"w-96 h-48 object-contain"} alt={"post"} src={games[e].imageUrl}/>
-                                <div className={"flex flex-col ml-9 w-1/5 justify-center items-start"}>
+                                <div className={"flex flex-col ml-9 lg:w-1/5 justify-center items-start"}>
                                     <h2 className={"text-xl font-bold"}>
                                         {games[e].name}
                                     </h2>
@@ -169,8 +190,23 @@ export const Home = () => {
                                 </div>
                             </div>
                         </Link>
+                    ):(
+                        <Link to={HOME_URL}>
+                            <div className="flex flex-row justify-center p-24">
+                                <img className={"w-96 h-48 object-contain"} alt={"post"} src={"https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG"}/>
+                                <div className={"flex flex-col ml-9 lg:w-1/5 justify-center items-start"}>
+                                    <h2 className={"text-xl font-bold"}>
+                                        Exemple de jeu
+                                    </h2>
+                                    <p className={"text-base"}>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    )
                     }
-                    <div className={"flex flex-col border border-tdt-brown h-1/2 w-1/5"} >
+                    <div className={"flex flex-col border border-tdt-brown h-1/2 lg:w-1/5"} >
                         <Link to={TCG_URL}>
                             <img className={"w-full h-1/2 object-contain "} src={TCG} alt={"wargame"} />
                             <div className={"w-full h-1/2 p-8 overflow-hidden"}>
