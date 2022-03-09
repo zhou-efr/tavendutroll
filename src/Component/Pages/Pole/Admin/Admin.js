@@ -15,6 +15,7 @@ export const Admin = () => {
 
     useEffect(() => {
         if (isAuthenticated){
+            // console.log(user);
             if(user.email.split("@")[1] === "tavernedutroll.org"){
                 setLogin(true);
             }
