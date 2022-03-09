@@ -19,7 +19,7 @@ export const Navbar = () => {
         document.title = "taverne du troll";
     }, [])
     return (
-        <div className={"md:fixed z-20 bottom-0 overflow-hidden w-full [height:60vh] md:h-16 bg-tdt-brown flex flex-col md:flex-row md:justify-start items-center"}>
+        <div className={"md:fixed z-20 bottom-0 overflow-hidden w-full h-screen md:h-16 bg-tdt-brown flex flex-col md:flex-row justify-center md:justify-start items-center"}>
             <Link to={HOME_URL}><img className={'object-contain m-1 h-48 md:h-16'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>
             <div className={"md:hidden text-xl flex flex-col items-center text-white gap-2"}>
                 <Link to={HOME_URL}><p className={"mr-3"}>Home</p></Link>
