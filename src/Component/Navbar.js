@@ -19,9 +19,9 @@ export const Navbar = () => {
         document.title = "taverne du troll";
     }, [])
     return (
-        <div className={"md:fixed z-20 bottom-0 overflow-hidden w-full h-96 md:h-16 bg-tdt-brown flex flex-col md:flex-row md:justify-start items-center"}>
+        <div className={"md:fixed z-20 bottom-0 overflow-hidden w-full [height:60vh] md:h-16 bg-tdt-brown flex flex-col md:flex-row md:justify-start items-center"}>
             <Link to={HOME_URL}><img className={'object-contain m-1 h-48 md:h-16'} src={logo} alt={'Logo de la Taverne du Troll'}/></Link>
-            <div className={"md:hidden text-xl flex flex-col items-center text-white"}>
+            <div className={"md:hidden text-xl flex flex-col items-center text-white gap-2"}>
                 <Link to={HOME_URL}><p className={"mr-3"}>Home</p></Link>
                 <Link to={OFFICE_URL}><p className={"mr-3"}>Bureau</p></Link>
                 <Link to={STATUTS_URL}><p className={"mr-3"}>Satuts</p></Link>
@@ -31,9 +31,9 @@ export const Navbar = () => {
                 <Link to={ABOUT_URL}><p className={"mr-3"}>About us</p></Link>
                 {
                     isAuthenticated ? (
-                        <button className={"mr-3 text-tdt-brown bg-white rounded-l"} onClick={() => logout({returnTo:"http://localhost:3000"})}>logout</button>
+                        <button className={"mr-3 text-tdt-brown bg-white rounded-lg p-2"} onClick={() => logout({returnTo:"http://localhost:3000"})}>logout</button>
                     ):(
-                        <button className={"mr-3 text-tdt-brown bg-white rounded-l"} onClick={() => loginWithRedirect()}>login</button>
+                        <button className={"mr-3 text-tdt-brown bg-white rounded-lg p-2"} onClick={() => loginWithRedirect()}>login</button>
                     )
                 }
                 <a href={'https://faireundon.wwf.fr/don'}>Donnez à la wwf</a>
