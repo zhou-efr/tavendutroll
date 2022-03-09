@@ -11,7 +11,7 @@ export const Profile = () => {
                 setPP(user.picture);
             }
         }
-    }, [])
+    }, [isLoading, isAuthenticated, user])
 
     if (isLoading) {
         return <div>Loading ...</div>;
