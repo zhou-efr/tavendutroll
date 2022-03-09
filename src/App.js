@@ -34,7 +34,7 @@ function App() {
       return (
           <>
               {
-                  !isLoading && (
+                  !isLoading ? (
                       <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans'}>
                           <BrowserRouter>
                               <Header />
@@ -58,6 +58,10 @@ function App() {
                               <Footer />
                               <Navbar />
                           </BrowserRouter>
+                      </div>
+                  ):(
+                      <div className={"w-screen h-screen flex items-center justify-center"}>
+                          <h1 className={"text-xl text-tdt-brown font-zelda"}>Loading, please wait</h1>
                       </div>
                   )
               }
