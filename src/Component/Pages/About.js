@@ -1,8 +1,13 @@
-export const About = (props) => {
+import {Header} from "../Header";
+
+export const About = () => {
     // TODO: about us page
     return (
-        <div className={'h-1/4'}>
+        <>
+            <Header />
+            <div className={'h-1/4'}>
 
-        </div>
+            </div>
+        </>
     );
 }

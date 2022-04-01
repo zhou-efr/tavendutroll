@@ -1,5 +1,4 @@
 import {Footer} from "./Component/Footer";
-import {Header} from "./Component/Header";
 import {Navbar} from "./Component/Navbar";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Home} from "./Component/Pages/Home";
@@ -34,7 +33,6 @@ function App() {
     return (
         <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans [scroll-behavior:smooth]'}>
             <BrowserRouter>
-                <Header />
                 <Routes>
                     <Route path={PROFILE_URL} element={<Profile />}/>
                     <Route path={OFFICE_URL} element={<Office />}/>

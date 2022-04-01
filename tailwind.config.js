@@ -15,9 +15,11 @@ module.exports = {
         'screen-1/2': '50vh',
         'screen-2/3': '66vh',
         'screen-3/4': '75vh',
+        'screen-5/4': '115vh',
       },
       colors : {
-        'tdt-brown': '#6E4E3A',
+        // 'tdt-brown': '#6E4E3A',
+        'tdt-brown': '#614632',
         'dark-brown': '#614632',
         'light-brown': '#9C8469',
         'item': 'rgba(0,0,0,0.87)'

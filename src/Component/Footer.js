@@ -34,16 +34,16 @@ export const Footer = () => {
                   <div className={"pt-3 w-56"}>
                       <h3 className={"text-2xl font-bold pb-2"}>Contact</h3>
                       <Link to={ABOUT_URL}><p className={'text-sm'}>About us</p></Link>
-                      <a href={"https://discord.gg/HzKkU6VFDK"}><p className={'text-sm'}>Discord</p></a>
-                      <a href={"mailto:killian.zhou@efrei.net"}><p className={'text-sm'}>Mail to webmaster</p></a>
+                      <a href={"https://discord.gg/HzKkU6VFDK"} target={"_blank"}><p className={'text-sm'}>Discord</p></a>
+                      <a href={"mailto:killian.zhou@efrei.net"} target={"_blank"}><p className={'text-sm'}>Mail to webmaster</p></a>
                       <Link to={PARTNER_URL}><p className={'text-sm'}>Partenaires</p></Link>
                   </div>
                   <div className={"pt-3 w-56"}>
                       <h3 className={"text-2xl font-bold pb-2"}>Association</h3>
-                      <a href={"https://www.helloasso.com/associations/la-taverne-du-troll"}><p className={'text-sm'}>Helloasso</p></a>
-                      <a href={"https://www.myefrei.fr/"}><p className={'text-sm'}>MyEfrei</p></a>
-                      <a href={"https://associations.efrei.fr/groups/taverne-du-troll"}><p className={'text-sm'}>Site association</p></a>
-                      <a href={"https://www.efrei.fr/"}><p className={'text-sm'}>EFREI Paris</p></a>
+                      <a href={"https://www.helloasso.com/associations/la-taverne-du-troll"} target={"_blank"}><p className={'text-sm'}>Helloasso</p></a>
+                      <a href={"https://www.myefrei.fr/"} target={"_blank"}><p className={'text-sm'}>MyEfrei</p></a>
+                      <a href={"https://associations.efrei.fr/groups/taverne-du-troll"} target={"_blank"}><p className={'text-sm'}>Site association</p></a>
+                      <a href={"https://www.efrei.fr/"} target={"_blank"}><p className={'text-sm'}>EFREI Paris</p></a>
                   </div>
               </div>
           </div>
@@ -52,9 +52,9 @@ export const Footer = () => {
               <div className={"flex flex-col items-end "}>
                   <div className={"flex flex-wrap pb-3 justify-center items-center"}>
                       <p className={'text-sm pr-2'}>follow us : </p>
-                      {icons.map((img, k) => <a href={img[1]} key={k}><img className={'w-8'} src={img[0]} alt={'logo'}/></a> )}
+                      {icons.map((img, k) => <a href={img[1]} key={k} target={"_blank"}><img className={'w-8'} src={img[0]} alt={'logo'}/></a> )}
                   </div>
-                  <a href={'https://www.starplayer.fr/'}><img src={starplayer} alt={'starplayer logo'} className={'w-16'}/></a>
+                  <a href={'https://www.starplayer.fr/'} target={"_blank"}><img src={starplayer} alt={'starplayer logo'} className={'w-16'}/></a>
               </div>
           </div>
       </div>

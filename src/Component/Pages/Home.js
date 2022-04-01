@@ -121,7 +121,7 @@ export const Home = () => {
 
     return (
         <div className={'min-h-screen w-screen flex flex-col items-center [scroll-snap-type:y_proximity] [scroll-behavior:smooth]'}>
-            <Carousel content={slides} classname={"mt-20 h-screen-3/4 w-5/6 [scroll-snap-align:start]"}/>
+            <Carousel content={slides} classname={"mt-10 h-screen-3/4 w-5/6 [scroll-snap-align:start]"}/>
             <div className={"mt-24 w-full flex flex-wrap justify-center lg:gap-0 gap-5"}>
                 <Link to={BOARD_URL}>
                     <div className={"flex flex-col items-center w-60 hover:underline"}>
