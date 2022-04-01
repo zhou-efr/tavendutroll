@@ -11,6 +11,9 @@ module.exports = {
         'home-text': '56vh',
         'home-text-phone': '80vw',
       },
+      width:{
+        'screen-90': '90vw',
+      },
       height: {
         'screen-1/3': '33vh',
         'screen-1/2': '50vh',

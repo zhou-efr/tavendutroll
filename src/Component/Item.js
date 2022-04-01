@@ -39,8 +39,8 @@ export const Item = (props) => {
         <div className={containerCss}>
             {
                 itemLoad?(
-                    <div className={`border p-6 rounded-xl flex flex-col justify-start p-6 items-center ${containerCss? "w-3/4": ""}`}>
-                        <div className={"flex flex-wrap w-full md:flex-nowrap gap-12 justify-center"}>
+                    <div className={`border p-6 rounded-xl flex flex-col justify-start p-6 items-center ${portrait?"w-screen-90":(containerCss? "w-3/4": "")}`}>
+                        <div className={"flex flex-wrap w-full md:flex-nowrap md:gap-12 justify-center"}>
                             <Link to={link}><img className={`rounded-xl object-cover max-w-md ${portrait?"home-picture-size-phone":"home-picture-size"}`} src={item.imageUrl} alt={"quest"}/></Link>
                             <div className={"flex flex-col justify-center"}>
                                 <div className={"flex flex-wrap md:flex-row gap-5 items-center m-6 md:m-0 justify-center"}>
