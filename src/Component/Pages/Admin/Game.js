@@ -1,37 +1,37 @@
 import {useState} from "react";
-import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../../Constant";
+import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../Constant";
 
-export const Post = (props) => {
-    const [post, setPost] = useState({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''})
+export const Game = () => {
+    const [game, setGame] = useState({name: '', support: '', pole: 'common', thumbnail: null, description: '', content: '', available: false})
 
     const onSubmit = async (e, target) => {
         let data = new FormData();
-        data.append('file', post.thumbnail[0])
+        data.append('file', game.thumbnail[0])
 
-        await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => null)
+        await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => console.log(e))
         // thumbnail = await thumbnail.json();
 
-        data = post;
-        data.imageUrl = BASE_IMAGE_API_URL + post.thumbnail[0].name;
-        let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => null)
+        data = game;
+        data.imageUrl = BASE_IMAGE_API_URL + game.thumbnail[0].name;
+        let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => console.log(e))
         res = await res.json();
-
+        console.log(res);
         if (!res){
-            alert("fail to create post");
+            alert("fail to create game");
         }else {
-            alert("create post");
+            alert("create game");
         }
 
-        setPost({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''});
+        setGame({name: '', support: '', pole: 'common', thumbnail: null, description: '', content: '', available: false});
     };
 
     return (
         <div className={"grid grid-cols-1 md:grid-cols-2 w-full"}>
             <h2 className={'text-2xl'}>
-                Add Post
+                Add Game
             </h2>
             <div className={"w-1/2 ml-3"}>
-                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'publication')}>
+                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'game')}>
                     Submit
                 </button>
             </div>
@@ -43,19 +43,25 @@ export const Post = (props) => {
                 </h3>
                 <input
                     className={" p-1 w-full"}
-                    placeholder={"Post Name"}
-                    value={post.name}
-                    onChange={(e) => setPost({...post, name: e.target.value})}/>
+                    placeholder={"Game Name"}
+                    value={game.name}
+                    onChange={(e) => setGame({...game, name: e.target.value})}/>
             </div>
             <div className={"w-1/2 ml-3"}>
                 <h3 className={"text-lg"}>
-                    Author
+                    Support
                 </h3>
-                <input
-                    className={" p-1 w-full"}
-                    placeholder={"Author Name"}
-                    value={post.author}
-                    onChange={(e) => setPost({...post, author: e.target.value})}/>
+                <select
+                    className={" p-1 w-full bg-white"}
+                    name="pole"
+                    id="pole-select"
+                    value={game.support}
+                    onChange={(e) => setGame({...game, support: e.target.value})}>
+                    <option value="">--Select A Support Type--</option>
+                    <option value="Physical">Physical</option>
+                    <option value="Virtual">Virtual</option>
+                    <option value="Other">Other</option>
+                </select>
             </div>
 
 
@@ -67,8 +73,8 @@ export const Post = (props) => {
                     className={" p-1 w-full bg-white"}
                     name="pole"
                     id="pole-select"
-                    value={post.pole}
-                    onChange={(e) => setPost({...post, pole: e.target.value})}>
+                    value={game.pole}
+                    onChange={(e) => setGame({...game, pole: e.target.value})}>
                     <option value="">--Select A Pole--</option>
                     <option value="Common">Common</option>
                     <option value="Admin">Admin</option>
@@ -88,7 +94,7 @@ export const Post = (props) => {
                     name="thumbnail"
                     className={" p-1 w-full bg-white"}
                     // value={post.thumbnail[0]}
-                    onChange={(e) => {console.log(post.thumbnail);setPost({...post, thumbnail: e.target.files});}}/>
+                    onChange={(e) => {console.log(game.thumbnail);setGame({...game, thumbnail: e.target.files});}}/>
             </div>
 
 
@@ -99,11 +105,21 @@ export const Post = (props) => {
                 <textarea
                     id="description"
                     name="description"
-                    rows="5"
+                    rows="3"
                     cols="33"
                     placeholder={"Lorem ipsum dolor sit amet"}
-                    value={post.description}
-                    onChange={(e) => setPost({...post, description: e.target.value})}/>
+                    value={game.description}
+                    onChange={(e) => setGame({...game, description: e.target.value})}/>
+
+                <div className={"mt-4"}>
+                    <input
+                        type="checkbox"
+                        value={game.available}
+                        onChange={(e) => setGame({...game, available: e.target.checked})}
+                        name={"available"}
+                    />
+                    <label className={"ml-2"} htmlFor="available">Available</label>
+                </div>
             </div>
             <div className={"w-1/2 ml-3"}>
                 <h3 className={"text-lg"}>
@@ -115,8 +131,8 @@ export const Post = (props) => {
                     rows="5"
                     cols="33"
                     placeholder={"Lorem ipsum dolor sit amet"}
-                    value={post.content}
-                    onChange={(e) => setPost({...post, content: e.target.value})}/>
+                    value={game.content}
+                    onChange={(e) => setGame({...game, content: e.target.value})}/>
             </div>
         </div>
     );

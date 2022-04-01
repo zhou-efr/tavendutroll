@@ -1,7 +1,7 @@
 import {useParams} from "react-router";
-import {Item} from "../../Item";
-import {QUEST_API_URL} from "../../../Constant";
-import {Header} from "../../Header";
+import {Item} from "../Item";
+import {QUEST_API_URL} from "../../Constant";
+import {Header} from "../Header";
 
 export const Quest = (props) => {
     let { id } = useParams() || props['id'];

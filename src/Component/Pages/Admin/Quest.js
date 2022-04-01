@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../../Constant";
+import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../Constant";
 import {useAuth0} from "@auth0/auth0-react";
 
 export const Quest = () => {

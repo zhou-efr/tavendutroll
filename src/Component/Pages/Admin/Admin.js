@@ -4,7 +4,7 @@ import {Event} from "./Event";
 import {Quest} from "./Quest";
 import {Game} from "./Game";
 import {useAuth0} from "@auth0/auth0-react";
-import {Header} from "../../../Header";
+import {Header} from "../../Header";
 
 export const Admin = () => {
     const [panda, setLogin] = useState(false);

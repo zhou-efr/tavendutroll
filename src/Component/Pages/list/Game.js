@@ -1,7 +1,7 @@
 import {useParams} from "react-router";
-import {Item} from "../../../Item";
-import {GAME_API_URL} from "../../../../Constant";
-import {Header} from "../../../Header";
+import {Item} from "../../Item";
+import {GAME_API_URL} from "../../../Constant";
+import {Header} from "../../Header";
 
 export const Game = (props) => {
     let { id } = useParams() || props['id'];

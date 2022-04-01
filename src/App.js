@@ -5,9 +5,9 @@ import {Home} from "./Component/Pages/Home";
 import {Office} from "./Component/Pages/Office";
 import {About} from "./Component/Pages/About";
 import {Partner} from "./Component/Pages/Partner";
-import {Admin} from "./Component/Pages/Pole/Admin/Admin";
+import {Admin} from "./Component/Pages/Admin/Admin";
 import {RolePlayingGame} from "./Component/Pages/Pole/RolePlayingGame";
-import {QuestBoard} from "./Component/Pages/Pole/QuestBoard";
+import {QuestBoard} from "./Component/Pages/list/QuestBoard";
 import {Wargame} from "./Component/Pages/Pole/Wargame";
 import {
     ABOUT_URL,
@@ -20,11 +20,11 @@ import {
     RPG_URL, STATUTS_URL,
     WARGAME_URL
 } from "./Constant";
-import {Quest} from "./Component/Pages/Pole/Quest";
+import {Quest} from "./Component/Pages/Quest";
 import {Record} from "./Component/Pages/Record";
 import {Event} from "./Component/Pages/Event";
-import {GameList} from "./Component/Pages/Pole/list/GameList";
-import {Game} from "./Component/Pages/Pole/list/Game";
+import {GameList} from "./Component/Pages/list/GameList";
+import {Game} from "./Component/Pages/list/Game";
 import {Statuts} from "./Component/Pages/Statuts";
 // import {useAuth0} from "@auth0/auth0-react";
 import {Profile} from "./Component/Pages/Profile";
