@@ -17,8 +17,8 @@ export const QuestBoard = () => {
     return (
         <>
             <Header />
-            <div className={'w-full flex flex-col justify-center items-center m-8'}>
-                <h1 className={'text-6xl m-6 font-zelda'}>Tableaux des quetes</h1>
+            <div className={'w-full flex flex-col justify-center items-center lg:m-8'}>
+                <h1 className={'text-6xl mt-6 lg:m-6 text-center font-zelda'}>Tableaux des quetes</h1>
                 <div className={'w-3/4 flex flex-col justify-center items-center'}>
                     {
                         questsLoad && quests.map((quest, k) => {

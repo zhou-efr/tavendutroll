@@ -26,7 +26,7 @@ export const Item = (props) => {
                 .then((res) => {setItem(res);setItemLoad(!!res);})
                 .catch((res) => {console.log(res)})
         }else{
-            console.log("props way");
+            // console.log("props way");
             setItem(props.item);
             setItemLoad(true);
         }
