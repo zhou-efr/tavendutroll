@@ -338,7 +338,7 @@ export const Home = () => {
                         </div>
                     </Link>
                 </div>
-                <div className={"flex mt-20 flex-wrap [width:80vw] lg:w-5/6 justify-around items-center mb-20 gap-10 lg:gap-0"}>
+                <div className={"flex mt-20 flex-wrap [width:80vw] lg:w-5/6 justify-around items-start mb-20 gap-10 lg:gap-0"}>
                     {
                         cards.map((item, index) => {
                             return (

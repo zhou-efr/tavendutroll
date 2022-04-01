@@ -24,10 +24,10 @@ export const Navbar = () => {
                 <Link to={HOME_URL}><p className={"mr-3"}>Home</p></Link>
                 <Link to={OFFICE_URL}><p className={"mr-3"}>Bureau</p></Link>
                 <Link to={STATUTS_URL}><p className={"mr-3"}>Satuts</p></Link>
-                { isAuthenticated && <Link to={ADMIN_URL}><p className={"mr-3"}>Admin</p></Link> }
-                { isAuthenticated && <Link to={PROFILE_URL}><p className={"mr-3"}>Profile</p></Link> }
                 <Link to={GAME_LIST_URL}><p className={"mr-3"}>Liste des jeux</p></Link>
                 <Link to={PARTNER_URL}><p className={"mr-3"}>Partenaires</p></Link>
+                { isAuthenticated && <Link to={ADMIN_URL}><p className={"mr-3"}>Admin</p></Link> }
+                { isAuthenticated && <Link to={PROFILE_URL}><p className={"mr-3"}>Profile</p></Link> }
                 {/*<Link to={ABOUT_URL}><p className={"mr-3"}>About us</p></Link>*/}
                 {
                     isAuthenticated ? (
@@ -42,10 +42,10 @@ export const Navbar = () => {
                 <Link to={HOME_URL}><p className={"mr-3"}>Home</p></Link>
                 <Link to={OFFICE_URL}><p className={"mr-3"}>Bureau</p></Link>
                 <Link to={STATUTS_URL}><p className={"mr-3"}>Satuts</p></Link>
-                { isAuthenticated && <Link to={ADMIN_URL}><p className={"mr-3"}>Admin</p></Link> }
-                { isAuthenticated && <Link to={PROFILE_URL}><p className={"mr-3"}>Profile</p></Link> }
                 <Link to={GAME_LIST_URL}><p className={"mr-3"}>Liste des jeux</p></Link>
                 <Link to={PARTNER_URL}><p className={"mr-3"}>Partenaires</p></Link>
+                { isAuthenticated && <Link to={ADMIN_URL}><p className={"mr-3"}>Admin</p></Link> }
+                { isAuthenticated && <Link to={PROFILE_URL}><p className={"mr-3"}>Profile</p></Link> }
                 {/*<Link to={ABOUT_URL}><p className={"mr-3"}>About us</p></Link>*/}
                 {
                     isAuthenticated ? (
