@@ -6,8 +6,19 @@ module.exports = {
       'zelda': ['"The Wild Breath of Zelda"', '"Sketch Gothic School"', 'Montserrat']
     },
     extend: {
+      spacing: {
+        '125': '125px',
+        'home-text': '56vh',
+      },
+      height: {
+        'screen-1/2': '50vh',
+        'screen-2/3': '66vh',
+        'screen-3/4': '75vh',
+      },
       colors : {
         'tdt-brown': '#6E4E3A',
+        'dark-brown': '#614632',
+        'light-brown': '#9C8469',
         'item': 'rgba(0,0,0,0.87)'
       },
       backgroundImage: {

@@ -1,7 +1,9 @@
 import {useState} from "react";
 import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../../Constant";
+import {useAuth0} from "@auth0/auth0-react";
 
-export const Quest = (props) => {
+export const Quest = () => {
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const [quest, setQuest] = useState({
         name: '',
         discordId: '',
@@ -14,15 +16,20 @@ export const Quest = (props) => {
     })
 
     const onSubmit = async (e, target) => {
+        if (isLoading || !isAuthenticated){
+            quest['author'] = "killian.zhou";
+        }else{
+            quest['author'] = user.nickname;
+        }
         let data = new FormData();
         data.append('file', quest.thumbnail[0])
 
-        await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => null)
+        await fetch(IMAGE_UPLOAD_API_URL, {method: 'POST', body: data}).catch(e => console.log(e))
         // thumbnail = await thumbnail.json();
 
         data = quest;
         data.imageUrl = BASE_IMAGE_API_URL + quest.thumbnail[0].name;
-        let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => null)
+        let res = await fetch(BASE_API_URL+target, {method: 'POST', body: JSON.stringify(data), headers: {'Content-Type': 'application/json'}}).catch(e => console.log(e))
         res = await res.json();
 
         if (!res){
