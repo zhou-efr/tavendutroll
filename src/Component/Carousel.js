@@ -26,8 +26,8 @@ export const Carousel = (props) => {
 
     return (
         <div className={"relative w-full ".concat(classname)}>
-            <div className={`${portrait?"[width:80vw] [height:45vw]":""} absolute left-10 top-32 lg:top-20 lg:left-[10vw] z-10`}>
-                <div className={`${portrait?"[width:80vw] [height:45vw]":"carousel-text-size"} bg-dark-brown p-5 flex flex-col items-start justify-center`}>
+            <div className={`${portrait?"home-picture-size-phone":""} absolute left-10 top-32 lg:top-20 lg:left-[10vw] z-10`}>
+                <div className={`${portrait?"home-picture-size-phone":"carousel-text-size"} bg-dark-brown p-5 flex flex-col items-start justify-center`}>
                     <div key={current} className={"[animation-name:carousel-text] [animation-duration:2s]"}>
                         <Link to={content[current%content.length].link}><h3 key={current} className={"text-4xl font-bold text-white hover:underline [animation-name:carousel-text-opacity] [animation-duration:2s]"}>{content[current%content.length].name}</h3></Link>
                         <p key={current} className={"text-base text-white [animation-name:carousel-text-opacity] [animation-duration:2s]"}>{content[current%content.length].description}</p>
@@ -42,7 +42,7 @@ export const Carousel = (props) => {
             <Link to={content[current%content.length].link}>
                 <img
                     key={current}
-                    className={`absolute hover:opacity-95 z-0 top-0 right-0 ml-6 ${portrait?"[width:80vw] [height:45vw]":"carousel-picture-size"} object-cover [animation-name:carousel] [animation-duration:2s]`}
+                    className={`absolute hover:opacity-95 z-0 top-0 right-0 ml-6 ${portrait?"home-picture-size-phone":"carousel-picture-size"} object-cover [animation-name:carousel] [animation-duration:2s]`}
                     src={content[current%content.length].imageUrl}
                     alt={"panda"}
                 />

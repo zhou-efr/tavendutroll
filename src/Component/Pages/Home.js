@@ -338,13 +338,13 @@ export const Home = () => {
                         </div>
                     </Link>
                 </div>
-                <div className={"flex mt-20 flex-wrap w-5/6 justify-around mb-20 gap-10 lg:gap-0"}>
+                <div className={"flex mt-20 flex-wrap [width:80vw] lg:w-5/6 justify-around items-center mb-20 gap-10 lg:gap-0"}>
                     {
                         cards.map((item, index) => {
                             return (
                                 <div key={index} className={"hover:opacity-90"}>
                                     <Link to={item.link}>
-                                        <img className={"home-picture-size object-cover mb-2"} src={item.imageUrl} alt={item.name}/>
+                                        <img className={`${portrait?"home-picture-size-phone":"home-picture-size"} object-cover mb-2`} src={item.imageUrl} alt={item.name}/>
                                         <h3 className={"text-2xl font-bold text-dark-brown w-home-text-phone lg:w-home-text"}>{item.name}</h3>
                                         <p className={"text-base text-dark-brown w-home-text-phone lg:w-home-text"}>{item.description}</p>
                                     </Link>

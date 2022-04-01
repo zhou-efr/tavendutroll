@@ -9,7 +9,7 @@ module.exports = {
       spacing: {
         '125': '125px',
         'home-text': '56vh',
-        'home-text-phone': '90vw',
+        'home-text-phone': '80vw',
       },
       height: {
         'screen-1/3': '33vh',
