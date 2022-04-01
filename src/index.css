@@ -29,11 +29,11 @@ code {
 }
 
 @keyframes carousel {
-  from {top: 40px}
+  from {top: 20px}
   to {top: 0}
 }
 @keyframes carousel-text {
-  from {margin-top: 40px; opacity: 0;}
+  from {margin-top: 20px; opacity: 0;}
   to {margin-top: 0; opacity: 1;}
 }
 @keyframes carousel-text-opacity {

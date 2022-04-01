@@ -31,45 +31,44 @@ import {Statuts} from "./Component/Pages/Statuts";
 import {Profile} from "./Component/Pages/Profile";
 
 function App() {
-    // const { isLoading } = useAuth0();
-      return (
-          <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans [scroll-behavior:smooth]'}>
-              <BrowserRouter>
-                  <Header />
-                  <Routes>
-                      <Route path={PROFILE_URL} element={<Profile />}/>
-                      <Route path={OFFICE_URL} element={<Office />}/>
-                      <Route path={ABOUT_URL} element={<About />}/>
-                      <Route path={PARTNER_URL} element={<Partner />}/>
-                      <Route path={ADMIN_URL} element={<Admin />}/>
-                      <Route path={STATUTS_URL} element={<Statuts />}/>
-                      <Route path={RPG_URL} element={<RolePlayingGame />}/>
-                      <Route path={WARGAME_URL} element={<Wargame />}/>
-                      <Route path={QUESTS_URL} element={<QuestBoard />}/>
-                      <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
-                      <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
-                      <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
-                      <Route path={GAME_LIST_URL} element={<GameList />}/>
-                      <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
-                      <Route path={GAME_URL+'/:id'} element={<Game />}/>
-                      <Route path={HOME_URL} element={<Home />}/>
-                  </Routes>
-                  <Footer />
-                  <Navbar />
-              </BrowserRouter>
-          </div>
-          // <>
-          //     {
-          //         !isLoading ? (
-          //
-          //         ):(
-          //             <div className={"w-screen h-screen flex items-center justify-center"}>
-          //                 <h1 className={"text-xl text-tdt-brown font-zelda"}>Loading, please wait</h1>
-          //             </div>
-          //         )
-          //     }
-          // </>
-      );
+    return (
+        <div className={'absolute top-0 left-0 min-h-screen h-screen w-screen overflow-x-hidden font-sans [scroll-behavior:smooth]'}>
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path={PROFILE_URL} element={<Profile />}/>
+                    <Route path={OFFICE_URL} element={<Office />}/>
+                    <Route path={ABOUT_URL} element={<About />}/>
+                    <Route path={PARTNER_URL} element={<Partner />}/>
+                    <Route path={ADMIN_URL} element={<Admin />}/>
+                    <Route path={STATUTS_URL} element={<Statuts />}/>
+                    <Route path={RPG_URL} element={<RolePlayingGame />}/>
+                    <Route path={WARGAME_URL} element={<Wargame />}/>
+                    <Route path={QUESTS_URL} element={<QuestBoard />}/>
+                    <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
+                    <Route path={RECORDS_URL+'/:id'} element={<Record />}/>
+                    <Route path={EVENTS_URL+'/:id'} element={<Event />}/>
+                    <Route path={GAME_LIST_URL} element={<GameList />}/>
+                    <Route path={GAME_LIST_URL+'/:type'} element={<GameList />}/>
+                    <Route path={GAME_URL+'/:id'} element={<Game />}/>
+                    <Route path={HOME_URL} element={<Home />}/>
+                </Routes>
+                <Footer />
+                <Navbar />
+            </BrowserRouter>
+        </div>
+        // <>
+        //     {
+        //         !isLoading ? (
+        //
+        //         ):(
+        //             <div className={"w-screen h-screen flex items-center justify-center"}>
+        //                 <h1 className={"text-xl text-tdt-brown font-zelda"}>Loading, please wait</h1>
+        //             </div>
+        //         )
+        //     }
+        // </>
+    );
 }
 
 export default App;

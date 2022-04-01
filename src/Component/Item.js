@@ -20,7 +20,6 @@ export const Item = (props) => {
         }
 
         if(props.call === "id"){
-            console.log("id way");
             setContainerCss("w-screen flex justify-center items-center mb-6 mt-6");
             fetch(props.url+'/'+id, {method: 'GET',})
                 .then(res => res.json())
@@ -33,6 +32,7 @@ export const Item = (props) => {
         }
         setButton(false);
     }, [id, props.call, props.item, props.url, props])
+
     return (
         <div className={containerCss}>
             {

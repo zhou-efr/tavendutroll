@@ -1,7 +1,7 @@
 import {
     BOARD_URL,
-    EVENT_API_URL,
-    GAME_API_URL, GAME_URL,
+    EVENT_API_URL, EVENTS_URL,
+    GAME_API_URL, GAME_URL, HOME_URL,
     QUEST_API_URL,
     QUESTS_URL,
     RECORD_API_URL,
@@ -62,14 +62,17 @@ export const Home = () => {
         {
             "name": "Welcome",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG"
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG",
+            "link": HOME_URL
         }
     ];
     let cards = [];
 
     if (postsLoad){
-        slides.push(posts[posts.length-1]);
-        let temp = posts[Math.floor(Math.random() * posts.length)];
+        let temp = posts[posts.length-1];
+        temp.link = RECORDS_URL+'/'+temp.id;
+        slides.push(temp);
+        temp = posts[Math.floor(Math.random() * posts.length)];
         temp.link = RECORDS_URL+'/'+temp.id;
         cards.push(temp);
     }
@@ -82,8 +85,10 @@ export const Home = () => {
         });
     }
     if (questsLoad){
-        slides.push(quests[quests.length-1]);
-        let temp = quests[Math.floor(Math.random() * quests.length)];
+        let temp = quests[quests.length-1];
+        temp.link = QUESTS_URL+'/'+temp.id;
+        slides.push(temp);
+        temp = quests[Math.floor(Math.random() * quests.length)];
         temp.link = QUESTS_URL+'/'+temp.id;
         cards.push(temp);
     }
@@ -96,7 +101,9 @@ export const Home = () => {
         });
     }
     if (eventsLoad){
-        slides.push(events[events.length-1]);
+        let temp = events[events.length-1];
+        temp.link = EVENTS_URL+'/'+temp.id;
+        slides.push(temp);
     }
     if (gamesLoad){
         let temp = games[Math.floor(Math.random() * games.length)];
@@ -113,8 +120,8 @@ export const Home = () => {
     }
 
     return (
-        <div className={'min-h-screen w-screen flex flex-col items-center'}>
-            <Carousel content={slides} classname={"mt-20 h-screen-3/4 w-5/6"}/>
+        <div className={'min-h-screen w-screen flex flex-col items-center [scroll-snap-type:y_proximity] [scroll-behavior:smooth]'}>
+            <Carousel content={slides} classname={"mt-20 h-screen-3/4 w-5/6 [scroll-snap-align:start]"}/>
             <div className={"mt-24 w-full flex flex-row justify-center gap-[-40px]"}>
                 <Link to={BOARD_URL}>
                     <div className={"flex flex-col items-center w-60"}>
@@ -331,7 +338,7 @@ export const Home = () => {
                 {
                     cards.map((item, index) => {
                         return (
-                            <div key={index} className={"hover:opacity-80"}>
+                            <div key={index} className={"hover:opacity-90"}>
                                 <Link to={item.link}>
                                     <img className={"home-picture-size object-cover mb-2"} src={item.imageUrl} alt={item.name}/>
                                     <h3 className={"text-2xl font-bold text-dark-brown w-home-text"}>{item.name}</h3>
