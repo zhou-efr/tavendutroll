@@ -122,7 +122,7 @@ export const Home = () => {
     return (
         <div className={'min-h-screen w-screen flex flex-col items-center [scroll-snap-type:y_proximity] [scroll-behavior:smooth]'}>
             <Carousel content={slides} classname={"mt-20 h-screen-3/4 w-5/6 [scroll-snap-align:start]"}/>
-            <div className={"mt-24 w-full flex flex-row justify-center gap-[-40px]"}>
+            <div className={"mt-24 w-full flex flex-wrap justify-center lg:gap-0 gap-5"}>
                 <Link to={BOARD_URL}>
                     <div className={"flex flex-col items-center w-60 hover:underline"}>
                         <svg width="40%" viewBox="0 0 165 165" xmlns="http://www.w3.org/2000/svg">
@@ -334,15 +334,15 @@ export const Home = () => {
                     </div>
                 </Link>
             </div>
-            <div className={"flex mt-20 flex-wrap w-5/6 justify-around mb-20"}>
+            <div className={"flex mt-20 flex-wrap w-5/6 justify-around mb-20 gap-10 lg:gap-0"}>
                 {
                     cards.map((item, index) => {
                         return (
                             <div key={index} className={"hover:opacity-90"}>
                                 <Link to={item.link}>
                                     <img className={"home-picture-size object-cover mb-2"} src={item.imageUrl} alt={item.name}/>
-                                    <h3 className={"text-2xl font-bold text-dark-brown w-home-text"}>{item.name}</h3>
-                                    <p className={"text-base text-dark-brown w-home-text"}>{item.description}</p>
+                                    <h3 className={"text-2xl font-bold text-dark-brown w-home-text-phone lg:w-home-text"}>{item.name}</h3>
+                                    <p className={"text-base text-dark-brown w-home-text-phone lg:w-home-text"}>{item.description}</p>
                                 </Link>
                             </div>
                         );
