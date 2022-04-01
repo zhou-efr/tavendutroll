@@ -29,8 +29,8 @@ code {
 }
 
 @keyframes carousel {
-  from {top: 20px}
-  to {top: 0}
+  from {top: 20px; opacity: 0;}
+  to {top: 0; opacity: 1;}
 }
 @keyframes carousel-text {
   from {margin-top: 20px; opacity: 0;}
