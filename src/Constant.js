@@ -1,10 +1,10 @@
-export const BASE_API_URL = process.env.REACT_APP_tdtApiUrl;
+export const BASE_API_URL = 'https://studenttdtapi.azurewebsites.net/api/';
 export const RECORD_API_URL = BASE_API_URL+'Publication';
 export const QUEST_API_URL = BASE_API_URL+'Quest';
 export const EVENT_API_URL = BASE_API_URL+'Event';
 export const GAME_API_URL = BASE_API_URL+'Game';
 export const IMAGE_UPLOAD_API_URL = BASE_API_URL+'File/upload';
-export const BASE_IMAGE_API_URL = process.env.REACT_APP_tdtStorageUrl;
+export const BASE_IMAGE_API_URL = 'https://studentstoragetdttest.blob.core.windows.net/tdtstudentconteneur/';
 
 export const RPG_URL = '/rpg';
 export const QUESTS_URL = "/rpg/quests";
