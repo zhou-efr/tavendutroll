@@ -4,6 +4,7 @@ import {useAuth0} from "@auth0/auth0-react";
 
 export const Quest = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
+    const [sending, setSending] = useState(false);
     const [quest, setQuest] = useState({
         name: '',
         discordId: '',
@@ -11,11 +12,13 @@ export const Quest = () => {
         thumbnail: null,
         description: '',
         content: '',
-        player: 3,
+        NbPlayer: 3,
         startDate: '',
+        players: '[]'
     })
 
     const onSubmit = async (e, target) => {
+        setSending(true);
         if (isLoading || !isAuthenticated){
             quest['author'] = "killian.zhou";
         }else{
@@ -45,16 +48,20 @@ export const Quest = () => {
             thumbnail: null,
             description: '',
             content: '',
-            startDate: '',});
+            NbPlayer: 3,
+            startDate: '',
+            players: '[]'
+        });
+        setSending(false);
     };
     // TODO: add quest as user
     return (
-        <div className={"grid grid-cols-1 md:grid-cols-2 w-full"}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 w-full ${sending?"opacity-70":""}`}>
             <h2 className={'text-2xl'}>
                 Add Quest
             </h2>
             <div className={"w-1/2 ml-3"}>
-                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'quest')}>
+                <button disabled={sending} className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'quest')}>
                     Submit
                 </button>
             </div>
@@ -65,6 +72,7 @@ export const Quest = () => {
                     Name
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Post Name"}
                     value={quest.name}
@@ -75,6 +83,7 @@ export const Quest = () => {
                     Author discord id
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Author Discord Id"}
                     value={quest.discordId}
@@ -87,6 +96,7 @@ export const Quest = () => {
                     Game
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Game name"}
                     value={quest.jeux}
@@ -97,6 +107,7 @@ export const Quest = () => {
                     Thumbnail
                 </h3>
                 <input
+                    disabled={sending}
                     type="file"
                     id="thumbnail"
                     name="thumbnail"
@@ -110,6 +121,7 @@ export const Quest = () => {
                     Description
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="description"
                     name="description"
                     rows="5"
@@ -123,6 +135,7 @@ export const Quest = () => {
                     Content
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="content"
                     name="content"
                     rows="5"
@@ -137,10 +150,11 @@ export const Quest = () => {
                     Number of players
                 </h3>
                 <input
+                    disabled={sending}
                     type={'number'}
                     name={"player"}
-                    value={quest.player}
-                    onChange={(e) => {console.log(quest.player);setQuest({...quest, player: e.target.value});}}
+                    value={quest.NbPlayer}
+                    onChange={(e) => {console.log(quest.NbPlayer);setQuest({...quest, NbPlayer: e.target.value});}}
                 />
             </div>
             <div className={"w-1/2 ml-3"}>
@@ -148,6 +162,7 @@ export const Quest = () => {
                     Start at
                 </h3>
                 <input
+                    disabled={sending}
                     type={'datetime-local'}
                     name={"time"}
                     value={quest.startDate}

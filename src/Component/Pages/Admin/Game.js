@@ -2,9 +2,11 @@ import {useState} from "react";
 import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../Constant";
 
 export const Game = () => {
+    const [sending, setSending] = useState(false);
     const [game, setGame] = useState({name: '', support: '', pole: 'common', thumbnail: null, description: '', content: '', available: false})
 
     const onSubmit = async (e, target) => {
+        setSending(true);
         let data = new FormData();
         data.append('file', game.thumbnail[0])
 
@@ -23,15 +25,16 @@ export const Game = () => {
         }
 
         setGame({name: '', support: '', pole: 'common', thumbnail: null, description: '', content: '', available: false});
+        setSending(false);
     };
 
     return (
-        <div className={"grid grid-cols-1 md:grid-cols-2 w-full"}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 w-full ${sending?"opacity-70":""}`}>
             <h2 className={'text-2xl'}>
                 Add Game
             </h2>
             <div className={"w-1/2 ml-3"}>
-                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'game')}>
+                <button disabled={sending} className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'game')}>
                     Submit
                 </button>
             </div>
@@ -42,6 +45,7 @@ export const Game = () => {
                     Name
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Game Name"}
                     value={game.name}
@@ -52,6 +56,7 @@ export const Game = () => {
                     Support
                 </h3>
                 <select
+                    disabled={sending}
                     className={" p-1 w-full bg-white"}
                     name="pole"
                     id="pole-select"
@@ -70,6 +75,7 @@ export const Game = () => {
                     Pole
                 </h3>
                 <select
+                    disabled={sending}
                     className={" p-1 w-full bg-white"}
                     name="pole"
                     id="pole-select"
@@ -89,6 +95,7 @@ export const Game = () => {
                     Thumbnail
                 </h3>
                 <input
+                    disabled={sending}
                     type="file"
                     id="thumbnail"
                     name="thumbnail"
@@ -103,6 +110,7 @@ export const Game = () => {
                     Description
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="description"
                     name="description"
                     rows="3"
@@ -113,6 +121,7 @@ export const Game = () => {
 
                 <div className={"mt-4"}>
                     <input
+                        disabled={sending}
                         type="checkbox"
                         value={game.available}
                         onChange={(e) => setGame({...game, available: e.target.checked})}
@@ -126,6 +135,7 @@ export const Game = () => {
                     Content
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="content"
                     name="content"
                     rows="5"

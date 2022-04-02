@@ -3,8 +3,10 @@ import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../C
 
 export const Post = () => {
     const [post, setPost] = useState({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''})
+    const [sending, setSending] = useState(false);
 
     const onSubmit = async (e, target) => {
+        setSending(true);
         let data = new FormData();
         data.append('file', post.thumbnail[0])
 
@@ -23,15 +25,16 @@ export const Post = () => {
         }
 
         setPost({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''});
+        setSending(false);
     };
 
     return (
-        <div className={"grid grid-cols-1 md:grid-cols-2 w-full"}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 w-full ${sending?"opacity-70":""}`}>
             <h2 className={'text-2xl'}>
                 Add Post
             </h2>
             <div className={"w-1/2 ml-3"}>
-                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'publication')}>
+                <button disabled={sending} className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'publication')}>
                     Submit
                 </button>
             </div>
@@ -42,6 +45,7 @@ export const Post = () => {
                     Name
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Post Name"}
                     value={post.name}
@@ -52,6 +56,7 @@ export const Post = () => {
                     Author
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Author Name"}
                     value={post.author}
@@ -64,6 +69,7 @@ export const Post = () => {
                     Pole
                 </h3>
                 <select
+                    disabled={sending}
                     className={" p-1 w-full bg-white"}
                     name="pole"
                     id="pole-select"
@@ -83,6 +89,7 @@ export const Post = () => {
                     Thumbnail
                 </h3>
                 <input
+                    disabled={sending}
                     type="file"
                     id="thumbnail"
                     name="thumbnail"
@@ -97,6 +104,7 @@ export const Post = () => {
                     Description
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="description"
                     name="description"
                     rows="5"
@@ -110,6 +118,7 @@ export const Post = () => {
                     Content
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="content"
                     name="content"
                     rows="5"

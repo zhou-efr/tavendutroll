@@ -11,13 +11,13 @@ import {QuestBoard} from "./Component/Pages/list/QuestBoard";
 import {Wargame} from "./Component/Pages/Pole/Wargame";
 import {
     ABOUT_URL,
-    ADMIN_URL, EVENTS_URL, GAME_LIST_URL, GAME_URL,
+    ADMIN_URL, BOARD_URL, EVENTS_URL, GAME_LIST_URL, GAME_URL,
     HOME_URL,
     OFFICE_URL,
     PARTNER_URL, PROFILE_URL,
     QUESTS_URL,
     RECORDS_URL,
-    RPG_URL, STATUTS_URL,
+    RPG_URL, STATUTS_URL, TCG_URL,
     WARGAME_URL
 } from "./Constant";
 import {Quest} from "./Component/Pages/Quest";
@@ -28,6 +28,8 @@ import {Game} from "./Component/Pages/list/Game";
 import {Statuts} from "./Component/Pages/Statuts";
 // import {useAuth0} from "@auth0/auth0-react";
 import {Profile} from "./Component/Pages/Profile";
+import {TraidingCardGame} from "./Component/Pages/Pole/TraidingCardGame";
+import {BoardGame} from "./Component/Pages/Pole/BoardGame";
 
 function App() {
     return (
@@ -42,6 +44,8 @@ function App() {
                     <Route path={STATUTS_URL} element={<Statuts />}/>
                     <Route path={RPG_URL} element={<RolePlayingGame />}/>
                     <Route path={WARGAME_URL} element={<Wargame />}/>
+                    <Route path={BOARD_URL} element={<BoardGame />}/>
+                    <Route path={TCG_URL} element={<TraidingCardGame />}/>
                     <Route path={QUESTS_URL} element={<QuestBoard />}/>
                     <Route path={QUESTS_URL+'/:id'} element={<Quest />}/>
                     <Route path={RECORDS_URL+'/:id'} element={<Record />}/>

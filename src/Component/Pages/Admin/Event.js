@@ -2,9 +2,11 @@ import {BASE_API_URL, BASE_IMAGE_API_URL, IMAGE_UPLOAD_API_URL} from "../../../C
 import {useState} from "react";
 
 export const Event = () => {
+    const [sending, setSending] = useState(false);
     const [event, setEvent] = useState({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''});
 
     const onSubmit = async (e, target) => {
+        setSending(true);
         let data = new FormData();
         data.append('file', event.thumbnail[0])
 
@@ -23,15 +25,16 @@ export const Event = () => {
         }
 
         setEvent({name: '', author: '', pole: 'common', thumbnail: null, description: '', content: ''});
+        setSending(false);
     };
 
     return (
-        <div className={"grid grid-cols-1 md:grid-cols-2 w-full"}>
+        <div className={`grid grid-cols-1 md:grid-cols-2 w-full ${sending?"opacity-70":""}`}>
             <h2 className={'text-2xl'}>
                 Add Event
             </h2>
             <div className={"w-1/2 ml-3"}>
-                <button className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'event')}>
+                <button disabled={sending} className={"shadow-md rounded p-2"} onClick={(e) => onSubmit(e, 'event')}>
                     Submit
                 </button>
             </div>
@@ -41,6 +44,7 @@ export const Event = () => {
                     Name
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Event Name"}
                     value={event.name}
@@ -51,6 +55,7 @@ export const Event = () => {
                     Author
                 </h3>
                 <input
+                    disabled={sending}
                     className={" p-1 w-full"}
                     placeholder={"Author Name"}
                     value={event.author}
@@ -63,6 +68,7 @@ export const Event = () => {
                     Pole
                 </h3>
                 <select
+                    disabled={sending}
                     className={" p-1 w-full bg-white"}
                     name="pole"
                     id="pole-select"
@@ -82,6 +88,7 @@ export const Event = () => {
                     Thumbnail
                 </h3>
                 <input
+                    disabled={sending}
                     type="file"
                     id="thumbnail"
                     name="thumbnail"
@@ -96,6 +103,7 @@ export const Event = () => {
                     Description
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="description"
                     name="description"
                     rows="5"
@@ -109,6 +117,7 @@ export const Event = () => {
                     Content
                 </h3>
                 <textarea
+                    disabled={sending}
                     id="content"
                     name="content"
                     rows="5"
